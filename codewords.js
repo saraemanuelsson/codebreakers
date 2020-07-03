@@ -673,12 +673,5 @@ let words = [
 {word:'Zoo'}
 ]
 
-words.forEach(item => console.log(item.word));
-
-// for (object in words) {
-//     console.log(object)};
-// console.log(words[1]);
-
-
 
 
