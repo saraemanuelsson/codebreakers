@@ -32,6 +32,7 @@ https://ngrok.com/
 https://www.textlocal.com/
 https://www.vonage.co.uk/
 https://picsum.photos/
+https://boardgamegeek.com/thread/1383878/word-list-future-moderators-codenames-games
 
 https://javascript.info/task/shuffle
 
