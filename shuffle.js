@@ -24,3 +24,11 @@ function shuffle(array) {
 let arr = [1, 2, 3];
 shuffle(arr);
 alert(arr);
+
+
+
+words = []
+
+const shuffled = words.sort(() => 0.5 - Math.random())
+
+const selected = shuffled.slice(0, 25)
