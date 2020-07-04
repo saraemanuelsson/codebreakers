@@ -56,7 +56,7 @@ export default {
         {colour: 'Neutral',
         word: 'monitor'},
         {colour: 'Neutral',
-        name: 'guitar'},
+        word: 'guitar'},
         {colour: 'Neutral',
         word: 'desk'},
         {colour: 'Neutral',
