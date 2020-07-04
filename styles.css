@@ -1,0 +1,159 @@
+body{
+    background-color: rgba(128, 128, 128, 0.37);
+}
+#board{
+    display: grid;
+    grid-template-columns: 3fr 8fr 3fr ;
+}
+#board > #score{
+    
+     display: grid;
+    grid-template-columns: 33% 33% 33%;
+    
+    margin: 0.5em;
+    background-color: aliceblue;
+    grid-column: 2/3;
+}
+h2{
+
+}
+#score > .cardredcontainer{
+    grid-column: 1/2;
+    display: flex;
+    flex-direction: row;
+    
+
+}
+#endturn{
+    text-align: center;
+    grid-column: 2/3;
+}
+.cardred{
+    border-width: 1px;
+    border-color: darkred;
+    margin-right: -10%;
+    /* grid-column: 1/2; */
+    box-shadow: darkgray 2px 2px 2px 2px;
+    height: 50px;
+    width: 50px;
+    border-radius: 5%;
+    background-color: coral;
+}
+/* #score{
+    display: flex;
+    flex-direction: row;
+    
+
+} */
+#score > .cardbluecontainer{
+    grid-column: 3/4;
+    display: flex;
+    flex-direction: row;
+    
+
+}
+.cardblue{
+    border-width: 1px;
+    border-color: darkred;
+    margin-right: -10%;
+    /* grid-column: 3/4; */
+    box-shadow: darkgray 2px 2px 2px 2px;
+    height: 50px;
+    width: 50px;
+    border-radius: 5%;
+    background-color: coral;
+}
+#gridingrid{grid-column: 2/3;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    margin: 0.5em;
+    background-color: aliceblue;
+}
+#f1{width:50px;
+    height: 50px;
+    background-color: burlywood;
+margin:0.5em;}
+#f2{width:50px;
+    height: 50px;background-color: burlywood;
+    margin:0.5em;}
+#f3{width:50px;
+    height: 50px;background-color: burlywood;
+    margin:0.5em;}
+#f4{width:50px;
+    height: 50px;background-color: burlywood;
+    margin:0.5em;}
+#f5{width:50px;
+    height: 50px;background-color: burlywood;
+    margin:0.5em;}
+#f6{width:50px;
+    height: 50px;background-color: burlywood;
+    margin:0.5em;}
+#f7{width:50px;
+    height: 50px;background-color: burlywood;
+    margin:0.5em;}
+#f8{width:50px;
+    height: 50px;background-color: burlywood;
+    margin:0.5em;}
+#f9{width:50px;
+    height: 50px;background-color: burlywood;
+    margin:0.5em;}
+#f10{width:50px;
+    height: 50px;background-color: burlywood;
+    margin:0.5em;}
+#f11{width:50px;
+    height: 50px;background-color: burlywood;
+    margin:0.5em;}
+#f12{width:50px;
+    height: 50px;background-color: burlywood;
+    margin:0.5em;}
+#f13{width:50px;
+    height: 50px;background-color: burlywood;
+    margin:0.5em;}
+#f14{width:50px;
+    height: 50px;background-color: burlywood;
+    margin:0.5em;}
+#f15{width:50px;
+    height: 50px;background-color: burlywood;
+    margin:0.5em;}
+#f16{width:50px;
+    height: 50px;background-color: burlywood;
+    margin:0.5em;}
+#f17{width:50px;
+    height: 50px;background-color: burlywood;
+    margin:0.5em;}
+#f18{width:50px;
+    height: 50px;background-color: burlywood;
+    margin:0.5em;}
+#f19{width:50px;
+    height: 50px;background-color: burlywood;
+    margin:0.5em;}
+#f20{width:50px;
+    height: 50px;background-color: burlywood;
+    margin:0.5em;}
+#f21{width:50px;
+    height: 50px;background-color: burlywood;
+    margin:0.5em;}
+#f22{width:50px;
+    height: 50px;background-color: burlywood;
+    margin:0.5em;}
+#f23{width:50px;
+    height: 50px;background-color: burlywood;
+    margin:0.5em;}
+#f24{width:50px;
+    height: 50px;background-color: burlywood;
+    margin:0.5em;}
+#f25{width:50px;
+    height: 50px;background-color: burlywood;
+    margin:0.5em;}
+#user{ display: grid;
+    grid-template-columns:  1fr 1fr 1fr 1fr;
+    grid-column: 2/3 ;
+     margin: 0.5em;
+
+}
+#user1{background-color: darkturquoise;
+    grid-column: 2/3;
+}
+#user2{background-color: dodgerblue;
+    grid-column: 3/4;
+}
