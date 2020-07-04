@@ -6,6 +6,143 @@ db.remainingCards.insertMany([
   {blue: '8'}
 ])
 
+db.gameStatus.insertMany([
+  {
+    gameOn: true,
+    usertTurn: 'red',
+    currentPlayCards: []
+  }
+])
+
+db.currentPlayCards.insertMany([
+  
+  {
+    colour: '',
+    word: '',
+    isClicked: false
+  },
+  {
+    colour: '',
+    word: '',
+    isClicked: false
+  },
+  {
+    colour: '',
+    word: '',
+    isClicked: false
+  },
+  {
+    colour: '',
+    word: '',
+    isClicked: false
+  },
+  {
+    colour: '',
+    word: '',
+    isClicked: false
+  },
+  {
+    colour: '',
+    word: '',
+    isClicked: false
+  },
+  {
+    colour: '',
+    word: '',
+    isClicked: false
+  },
+  {
+    colour: '',
+    word: '',
+    isClicked: false
+  },
+  {
+    colour: '',
+    word: '',
+    isClicked: false
+  },
+  {
+    colour: '',
+    word: '',
+    isClicked: false
+  },
+  {
+    colour: '',
+    word: '',
+    isClicked: false
+  },
+  {
+    colour: '',
+    word: '',
+    isClicked: false
+  },
+  {
+    colour: '',
+    word: '',
+    isClicked: false
+  },
+  {
+    colour: '',
+    word: '',
+    isClicked: false
+  },
+  {
+    colour: '',
+    word: '',
+    isClicked: false
+  },
+  {
+    colour: '',
+    word: '',
+    isClicked: false
+  },
+  {
+    colour: '',
+    word: '',
+    isClicked: false
+  },
+  {
+    colour: '',
+    word: '',
+    isClicked: false
+  },
+  {
+    colour: '',
+    word: '',
+    isClicked: false
+  },
+  {
+    colour: '',
+    word: '',
+    isClicked: false
+  },
+  {
+    colour: '',
+    word: '',
+    isClicked: false
+  },
+  {
+    colour: '',
+    word: '',
+    isClicked: false
+  },
+  {
+    colour: '',
+    word: '',
+    isClicked: false
+  },
+  {
+    colour: '',
+    word: '',
+    isClicked: false
+  },
+  {
+    colour: '',
+    word: '',
+    isClicked: false
+  },
+])
+
 db.prePlayCards.insertMany([
   {colour: 'Red'},
   {colour: 'Red'},
