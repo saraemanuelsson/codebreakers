@@ -1,6 +1,11 @@
 use codebreaker;
 db.dropDatabase();
 
+db.remainingCards.insertMany([
+  {red: '9'},
+  {blue: '8'}
+])
+
 db.prePlayCards.insertMany([
   {colour: 'Red'},
   {colour: 'Red'},
@@ -27,7 +32,7 @@ db.prePlayCards.insertMany([
   {colour: 'Neutral'},
   {colour: 'Neutral'},
   {colour: 'Black'}
-]) 
+])
 
 
 db.words.insertMany([
