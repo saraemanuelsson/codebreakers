@@ -1,7 +1,6 @@
 <template>
 <div id="card">
-  <h4>{{card.word}}</h4>
-  <h4>{{card.colour}}</h4>
+  <h4>{{card.word}} <br> {{card.colour}}</h4>
   </div>
 </template>
 

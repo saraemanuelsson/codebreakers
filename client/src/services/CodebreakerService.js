@@ -1,5 +1,5 @@
 const baseURL = 'http://localhost:3000/api/'
-const cards = "cards"
+const cards = "preplaycards"
 const words = "words"
 
 export default {

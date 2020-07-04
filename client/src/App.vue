@@ -14,22 +14,22 @@ export default {
   },
   data() {
     return {
-      cards: [{colour: "blue"}, {colour: "red"}, {colour: "neutral"}, {colour: "black"}],
-      words: [{word: "guitar"}, {word: "cat"}, {word: "table"}, {word: "ukulele"}]
+      cards: [],
+      words: []
     }
   },
   mounted() {
-    // this.fetchCards();
-    // this.createCard();
+    this.fetchCards();
+
   },
   methods: {
     
-    shuffle() {
-      const shuffled = this.cards.sort(() => 0.5 - Math.random());
+    shuffle(array) {
+      const shuffled = array.sort(() => 0.5 - Math.random());
       return shuffled;
     },
     cardSplice(cards) {
-      const shuffledWords = cards.shuffle()
+      const shuffledWords = this.shuffle(this.words)
       return shuffledWords.splice(0, 25)
     },
     fetchCards() {
@@ -37,16 +37,19 @@ export default {
       .then(cards => {
         this.cards = cards
       })
-      CodeBreakerService.getWords()
-      .then(words => {
-        this.words = this.cardSplice(words)
-      })
 
-    }
-  },
-  computed: {
+      .then(() => this.shuffle(this.cards))
+      CodeBreakerService.getWords()
+      .then(words => {        
+        this.words = words
+      })
+      .then(() => {
+        this.shuffle(this.words)
+        this.createCard()
+      })
+    },
     createCard(){
-      this.cards.map((card, i) => {
+      return this.cards.map((card, i) => {
         card.word =  this.words[i].word,
         card.isClicked = false,
         card.isHidden = true

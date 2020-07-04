@@ -15,7 +15,6 @@ db.gameStatus.insertMany([
 ])
 
 db.currentPlayCards.insertMany([
-  
   {
     colour: '',
     word: '',
