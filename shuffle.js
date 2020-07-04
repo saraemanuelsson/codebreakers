@@ -32,3 +32,5 @@ words = []
 const shuffled = words.sort(() => 0.5 - Math.random())
 
 const selected = shuffled.slice(0, 25)
+
+
