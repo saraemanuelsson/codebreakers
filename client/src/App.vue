@@ -6,7 +6,7 @@
 
 <script>
 import Grid from "./components/Grid.vue";
-
+import CodeBreakerService from "./services/CodebreakerService";
 export default {
   name: 'App',
   components: {
@@ -14,67 +14,43 @@ export default {
   },
   data() {
     return {
-      cards: [
-        {colour: 'Red',
-        word: "Mammoth"},
-        {colour: 'Red',
-        word: "Beethoven"},
-        {colour: 'Red',
-        word: "Big"},
-        {colour: 'Red',
-        word: "Bird"},
-        {colour: 'Red',
-        word: "Boat"},
-        {colour: 'Red',
-        word: "Crow"},
-        {colour: 'Red',
-        word: "Dart"},
-        {colour: 'Red',
-        word: "Day"},
-        {colour: 'Red',
-        word: "Mascot"},
-        {colour: 'Blue',
-        word: "Mexico"},
-        {colour: 'Blue',
-        word: "Midsummer"},
-        {colour: 'Blue',
-        word:"Mouse"},
-        {colour: 'Blue',
-        word:"Cat"},
-        {colour: 'Blue',
-        word:"Lake"},
-        {colour: 'Blue',
-        word:"Sky"},
-        {colour: 'Blue',
-        word:"Plane"},
-        {colour: 'Blue',
-        word:"Moon"},
-        {colour: 'Neutral',
-        word:"Mouse"},
-        {colour: 'Neutral',
-        word: 'calendar'},
-        {colour: 'Neutral',
-        word: 'monitor'},
-        {colour: 'Neutral',
-        word: 'guitar'},
-        {colour: 'Neutral',
-        word: 'desk'},
-        {colour: 'Neutral',
-        word: 'alligator'},
-        {colour: 'Neutral',
-        word: 'dog'},
-        {colour: 'Black',
-        word: 'apple'}
-      ]
+      cards: [{colour: "blue"}, {colour: "red"}, {colour: "neutral"}, {colour: "black"}],
+      words: [{word: "guitar"}, {word: "cat"}, {word: "table"}, {word: "ukulele"}]
     }
   },
   mounted() {
-    this.shuffle();
+    // this.fetchCards();
+    // this.createCard();
   },
   methods: {
+    
     shuffle() {
       const shuffled = this.cards.sort(() => 0.5 - Math.random());
       return shuffled;
+    },
+    cardSplice(cards) {
+      const shuffledWords = cards.shuffle()
+      return shuffledWords.splice(0, 25)
+    },
+    fetchCards() {
+      CodeBreakerService.getCards()
+      .then(cards => {
+        this.cards = cards
+      })
+      CodeBreakerService.getWords()
+      .then(words => {
+        this.words = this.cardSplice(words)
+      })
+
+    }
+  },
+  computed: {
+    createCard(){
+      this.cards.map((card, i) => {
+        card.word =  this.words[i].word,
+        card.isClicked = false,
+        card.isHidden = true
+      })
     }
   }
 }
