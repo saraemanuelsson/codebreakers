@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <button type="submit" v-on:click="setCurrentCards">Start Game</button>
-    <grid :cards="currentCards"></grid>
+    <button height="50px" type="submit" v-on:click="setCurrentCards">Start Game</button>
+    <grid id="grid" :cards="currentCards"></grid>
 
   </div>
 </template>
@@ -74,7 +74,18 @@ export default {
 
 <style>
 #app {
-
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+}
+#grid {
+  background-color: rgba(0, 0, 255, 0.356);
+  grid-column: 2/5;
+  display: grid;
+  grid-template-columns: 20% 20% 20% 20% 20%;
+}
+button{
+  height:100px;
+  grid-column: 3/4;
 }
 
 </style>

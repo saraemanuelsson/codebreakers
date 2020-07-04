@@ -1,6 +1,6 @@
 <template>
     <div id="cardsGrid">
-        <card v-for="card, index in cards" :key="index" :card="card"></card>
+        <card id="card" v-for="card, index in cards" :key="index" :card="card"></card>
     </div>
 </template>
 
@@ -11,16 +11,20 @@ export default {
     props: ['cards'],
     components: {
         'card': Card
-
     }
-
-
 }
 </script>
 
 <style>
-#cardsGrid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+#cardsGrid{
+    display: flex;
+    flex-direction: row;
+}
+#card {vertical-align: center;
+    /* display: flexbox;
+    flex-direction: row; */
+    /* grid-template-columns: 20% 20% 20% 20% 20%;
+    grid-template-rows: 20% 20% 20% 20% 20%; */
+    background-color: rgb(180, 150, 111);
 }
 </style>
