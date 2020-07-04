@@ -1,6 +1,6 @@
 use codebreaker;
 
-db.prePlayedCards.insertMany([
+db.prePlayCards.insertMany([
   {colour: 'Red'},
   {colour: 'Red'},
   {colour: 'Red'},
