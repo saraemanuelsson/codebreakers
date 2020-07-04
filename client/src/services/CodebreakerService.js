@@ -11,5 +11,6 @@ export default {
     getWords() {
         return fetch(baseURL+words)
         .then(res => res.json())
+        // delay: 200
     }
 }

@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <grid :cards="cards"></grid>
+    <button type="submit" v-on:click="setCurrentCards">Start Game</button>
+    <grid :cards="currentCards"></grid>
+
   </div>
 </template>
 
@@ -15,7 +17,8 @@ export default {
   data() {
     return {
       cards: [],
-      words: []
+      words: [],
+      currentCards: []
     }
   },
   mounted() {
@@ -33,27 +36,37 @@ export default {
       return shuffledWords.splice(0, 25)
     },
     fetchCards() {
-      CodeBreakerService.getCards()
-      .then(cards => {
-        this.cards = cards
-      })
-
-      .then(() => this.shuffle(this.cards))
-      CodeBreakerService.getWords()
+      
+      const promise1 = CodeBreakerService.getWords()
       .then(words => {        
         this.words = words
       })
       .then(() => {
         this.shuffle(this.words)
-        this.createCard()
       })
+
+      const promise2 = CodeBreakerService.getCards()
+      .then(cards => {
+        this.cards = cards
+      })
+
+      const promises = [promise1, promise2]
+
+      Promise.all(promises)
+      .then(() => this.createCard())
+      .then(() => this.shuffle(this.cards))
     },
     createCard(){
       return this.cards.map((card, i) => {
-        card.word =  this.words[i].word,
+        card.word = this.words[i].word,
         card.isClicked = false,
         card.isHidden = true
       })
+    },
+
+    setCurrentCards(){
+      // this.shuffle(this.words)
+      this.currentCards = this.cards
     }
   }
 }
@@ -63,4 +76,5 @@ export default {
 #app {
 
 }
+
 </style>

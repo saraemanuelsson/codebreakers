@@ -1,6 +1,6 @@
 <template>
-<div id="card">
-  <h4>{{card.word}} <br> {{card.colour}}</h4>
+  <div id="card">
+    <p>{{card.word}}<br>{{card.colour}}</p>
   </div>
 </template>
 
