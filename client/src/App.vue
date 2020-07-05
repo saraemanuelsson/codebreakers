@@ -26,11 +26,13 @@ export default {
       redTurn: false,
       blueTurn: false,
       redScore: 9,
-      blueScore: 8
+      blueScore: 8,
+      round: 0
     }
   },
   mounted() {
     this.fetchCards();
+    // this.fetchGameStatus();
 
   },
   methods: {
@@ -73,10 +75,28 @@ export default {
     },
 
     startGame() {
-      this.setCurrentCards();
+      const gameStatus = this.fetchGameStatus()
+      this.setCurrentCards()
       this.gameOn = true; 
       this.redTurn = true;
+      
+
+      const updatedGameStatus = {
+        ...gameStatus,
+        gameOn: this.gameOn,
+        redTurn: this.redTurn,
+        currentCards: this.currentCards
+      }
+      
+      CodeBreakerService.updateGameStatus(updatedGameStatus);
     },
+
+    fetchGameStatus() { 
+      return CodeBreakerService.getGameStatus()
+      console.log(CodeBreakerService.getGameStatus());
+      
+    },
+
 
     setCurrentCards(){
       // this.shuffle(this.words)
