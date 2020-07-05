@@ -73,19 +73,28 @@ export default {
 </script>
 
 <style>
-#app {
+@import url(https://fonts.googleapis.com/css?family=Anton:regular);
+#app {font-family: "Anton";
   display: grid;
-  grid-template-columns: 20% 20% 20% 20% 20%;
+  grid-template-columns: 26% 16% 16% 16% 26%;
 }
-#grid {
-  background-color: rgba(0, 0, 255, 0.356);
+#grid {column-gap: 0.2vw;
+  /* box-shadow: 1em 1em 1px 1px rgb(red, green, rgb(1, 1, 37)); */
+  border: 1rem solid rgb(75, 72, 72);
+  background-color: rgb(0, 0, 0);
   grid-column: 2/5;
   display: grid;
   grid-template-columns: 20% 20% 20% 20% 20%;
+  border-radius: 2%;
+  padding: 0.5vw;
 }
 button{
-  height:100px;
+  color: rgb(89, 175, 2);
+  border-style: none;
+  font-family: "Anton";
+  height:50px;
   grid-column: 3/4;
+  margin: 10%;
 }
 
 </style>

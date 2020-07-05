@@ -14,28 +14,34 @@ props: ['card']
 
 <style>
 #card{
+  color: rgb(51, 50, 50);
   text-align: center;
-  width: 10vw;
-  height: 10vw;
-  margin: 10px;
+  width: 6vw;
+  height: 6vw;
+  margin: 0.3vw;
+  padding: 0.6vw;
   border-radius: 15%;
 
 }
 p{
-  font-size: 1.2vw;
-  padding: 25%;
+  font-size: 1vw;
+  padding-top: 25%;
 }
 #card.Red:hover{
+  transition: 0.5s;
   border-radius:50%;
-  background-color: red;
+  background-color: rgb(204, 23, 23);
+  color: white;
 
 }
 #card.Blue:hover{
+  transition: 1s;
   border-radius: 0%;
-  background-color: darkblue;
+  background-color: rgb(58, 58, 167);
+  color: white;
 }
 #card.Black:hover{
-  background-color: black;
+  background-color: rgb(44, 43, 43);
   color: white;
 }
 #card:hover{
