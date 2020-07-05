@@ -25,7 +25,7 @@ props: ['card']
 
 }
 p{
-  font-size: 1vw;
+  font-size: 0.8vw;
   padding-top: 40%;
 }
 #card.Red:hover{

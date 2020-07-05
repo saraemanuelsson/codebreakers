@@ -78,7 +78,7 @@ export default {
 </script>
 
 <style>
-@import url(https://fonts.googleapis.com/css?family=Anton:regular);
+@import url(https://fonts.googleapis.com/css?family=Bungee:regular);
 *{
   margin: 0;
 }
@@ -92,7 +92,7 @@ export default {
   background-attachment: fixed;
   background-position-x: left;
   background-position-y: bottom;
-  font-family: "Anton";
+  font-family: "Bungee";
   display: grid;
   grid-template-columns: 26% 16% 16% 16% 26%;
 }
