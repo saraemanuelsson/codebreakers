@@ -1,5 +1,7 @@
 <template>
-  <button v-on:click="displayColours" v-on:mouseup="hideColours">SpyMaster</button>
+  <button v-on:click="displayColours">SpyMaster</button>
+  <!-- <button v-on:mousedown="displayColours" v-on:mouseclick="hideColours">SpyMaster</button> -->
+
 </template>
 
 <script>
@@ -9,13 +11,25 @@ export default {
     props: ['cards'],
     methods: {
         displayColours() {
-            eventBus.$emit('display-colours', false)
+            console.log(this.cards)
+            const unHiddenCards = this.cards.map((card) => card.isHidden = false)
+            eventBus.$emit("display-to-app", unHiddenCards)
         },
         hideColours() {
-            eventBus.$emit('hide-colours', true)
-            
+            console.log(this.cards)
+            const hiddenCards = this.cards.map((card) => card.isHidden = true)
+            eventBus.$emit("display-to-app", hiddenCards)
         }
     }
+    // methods: {
+    //     displayColours() {
+    //         eventBus.$emit('display-colours', false)
+    //     },
+    //     hideColours() {
+    //         eventBus.$emit('hide-colours', true)
+            
+        // }
+    
 }
 </script>
 

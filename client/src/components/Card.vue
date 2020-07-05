@@ -5,7 +5,6 @@
       <p>{{card.word}}</p>
       </div>
     </div>
-    <div v-if="card.isHidden && card.colour === 'Red'" style="background-color: rgb(204, 23, 23);"></div>
   </div>
 </template>
 

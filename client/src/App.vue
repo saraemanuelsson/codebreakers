@@ -3,7 +3,7 @@
     <button v-on:click="toggleGameState">{{ gameStateText }}</button>
     <score-bar id="score-bar" :redScore="redScore" :blueScore="blueScore"></score-bar>
     <grid id="grid" :cards="currentCards"></grid>
-    <user></user>
+    <user :cards="currentCards"></user>
   </div>
 </template>
 
