@@ -1,7 +1,14 @@
 <template>
-  <div id="card" v-bind:class="card.colour" v-on:click="clickCard">
-    <p>{{card.word}}</p>
+    <!-- <div id="card"> -->
+  <div id="card" v-bind:class='card.colour' v-on:click="clickCard">
+      <!-- v-bind:class='card.isClicked && card.colour' -->
+      <!-- <div v-bind:id="card.isClicked" >
+
+      <div v-bind:class="card.colour" v-on:click="clickCard"> -->
+        <p>{{card.word}}</p>
+      </div>
   </div>
+  <!-- </div> -->
 </template>
 
 <script>
@@ -20,6 +27,10 @@ methods: {
 </script>
 
 <style>
+#card #true .Blue {
+  color: pink;
+  transform: scale(2);
+}
 #card{
   color: rgb(51, 50, 50);
   text-align: center;
@@ -35,6 +46,13 @@ p{
   font-size: 0.8vw;
   padding-top: 40%;
 }
+#card.Red{
+  transition: 0.5s;
+  border-radius:50%;
+  background-color: rgb(204, 23, 23);
+  color: white;
+}
+
 #card.Red:hover{
   transition: 0.5s;
   border-radius:50%;

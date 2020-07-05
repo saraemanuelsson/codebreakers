@@ -48,10 +48,9 @@ export default {
 
 
     clickCard(card) {
-      
       const index = this.currentCards.indexOf(card);
       this.currentCards[index].isClicked = true;
-
+      // this.currentCards[index].isHidden = false;
     },
     
     nextTurn(){
