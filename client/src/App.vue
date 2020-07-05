@@ -1,9 +1,9 @@
 <template>
   <div id="app">
-    <button type="submit" v-on:click="startGame">Start Game</button>
+    <button v-on:click="toggleGameState">{{ gameStateText }}</button>
     <score-bar id="score-bar" :redScore="redScore" :blueScore="blueScore"></score-bar>
     <grid id="grid" :cards="currentCards"></grid>
-    <button type="submit" value="test">Placeholder</button>
+    <button value="test">Placeholder</button>
   </div>
 </template>
 
@@ -23,7 +23,7 @@ export default {
       cards: [],
       words: [],
       currentCards: [],
-      redTurn: false,
+      redTurn: true,
       blueTurn: false,
       redScore: 9,
       blueScore: 8,
@@ -32,10 +32,22 @@ export default {
   },
   mounted() {
     this.fetchCards();
-    // this.fetchGameStatus();
 
   },
+  computed: {
+    gameStateText() {
+      return this.gameOn ? 'End turn' : 'Start game'
+    }
+    
+  },
   methods: {
+    
+    nextTurn(){
+      
+      this.redTurn = !this.redTurn
+      this.blueTurn = !this.blueTurn
+ 
+    },
     
     shuffle(array) {
       const shuffled = array.sort(() => 0.5 - Math.random());
@@ -74,19 +86,24 @@ export default {
       })
     },
 
+    toggleGameState (){
+      return this.gameOn ? this.nextTurn() : this.startGame()
+    },
+
     startGame() {
       const gameStatus = this.fetchGameStatus()
 
       this.setCurrentCards()
       this.gameOn = true; 
       this.redTurn = true;
+      this.round = this.round + 1;
       
 
       const updatedGameStatus = {
         ...gameStatus,
         gameOn: this.gameOn,
-        redTurn: this.redTurn,
-        currentCards: this.currentCards
+        currentCards: this.currentCards,
+        round: this.round
       }
       
       CodeBreakerService.updateGameStatus(updatedGameStatus);

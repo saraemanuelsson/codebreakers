@@ -4,7 +4,7 @@ db.dropDatabase();
 db.gameStatus.insertMany([
   {
     gameOn: false,
-    redTurn: false,
+    redTurn: true,
     blueTurn: false,
     currentCards: [],
     redScore: 9,
