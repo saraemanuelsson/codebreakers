@@ -18,7 +18,7 @@ props: ['card']
   text-align: center;
   width: 6vw;
   height: 6vw;
-  margin: 0.3vw;
+  margin: 0.6vw;
   padding: 0.6vw;
   border-radius: 15%;
 

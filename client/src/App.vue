@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <button height="50px" type="submit" v-on:click="setCurrentCards">Start Game</button>
+    <button type="submit" v-on:click="setCurrentCards">Start Game</button>
     <grid id="grid" :cards="currentCards"></grid>
 
   </div>
@@ -78,8 +78,7 @@ export default {
   display: grid;
   grid-template-columns: 26% 16% 16% 16% 26%;
 }
-#grid {column-gap: 0.2vw;
-  /* box-shadow: 1em 1em 1px 1px rgb(red, green, rgb(1, 1, 37)); */
+#grid {
   border: 1rem solid rgb(75, 72, 72);
   background-color: rgb(0, 0, 0);
   grid-column: 2/5;
