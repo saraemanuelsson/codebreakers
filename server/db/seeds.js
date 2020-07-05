@@ -8,139 +8,140 @@ db.remainingCards.insertMany([
 
 db.gameStatus.insertMany([
   {
-    gameOn: true,
-    usertTurn: 'red',
-    currentPlayCards: []
+    gameOn: false,
+    redTurn: false,
+    blueTurn: false,
+    currentCards: []
   }
 ])
 
-db.currentPlayCards.insertMany([
-  {
-    colour: '',
-    word: '',
-    isClicked: false
-  },
-  {
-    colour: '',
-    word: '',
-    isClicked: false
-  },
-  {
-    colour: '',
-    word: '',
-    isClicked: false
-  },
-  {
-    colour: '',
-    word: '',
-    isClicked: false
-  },
-  {
-    colour: '',
-    word: '',
-    isClicked: false
-  },
-  {
-    colour: '',
-    word: '',
-    isClicked: false
-  },
-  {
-    colour: '',
-    word: '',
-    isClicked: false
-  },
-  {
-    colour: '',
-    word: '',
-    isClicked: false
-  },
-  {
-    colour: '',
-    word: '',
-    isClicked: false
-  },
-  {
-    colour: '',
-    word: '',
-    isClicked: false
-  },
-  {
-    colour: '',
-    word: '',
-    isClicked: false
-  },
-  {
-    colour: '',
-    word: '',
-    isClicked: false
-  },
-  {
-    colour: '',
-    word: '',
-    isClicked: false
-  },
-  {
-    colour: '',
-    word: '',
-    isClicked: false
-  },
-  {
-    colour: '',
-    word: '',
-    isClicked: false
-  },
-  {
-    colour: '',
-    word: '',
-    isClicked: false
-  },
-  {
-    colour: '',
-    word: '',
-    isClicked: false
-  },
-  {
-    colour: '',
-    word: '',
-    isClicked: false
-  },
-  {
-    colour: '',
-    word: '',
-    isClicked: false
-  },
-  {
-    colour: '',
-    word: '',
-    isClicked: false
-  },
-  {
-    colour: '',
-    word: '',
-    isClicked: false
-  },
-  {
-    colour: '',
-    word: '',
-    isClicked: false
-  },
-  {
-    colour: '',
-    word: '',
-    isClicked: false
-  },
-  {
-    colour: '',
-    word: '',
-    isClicked: false
-  },
-  {
-    colour: '',
-    word: '',
-    isClicked: false
-  },
-])
+// db.currentPlayCards.insertMany([
+//   {
+//     colour: '',
+//     word: '',
+//     isClicked: false
+//   },
+//   {
+//     colour: '',
+//     word: '',
+//     isClicked: false
+//   },
+//   {
+//     colour: '',
+//     word: '',
+//     isClicked: false
+//   },
+//   {
+//     colour: '',
+//     word: '',
+//     isClicked: false
+//   },
+//   {
+//     colour: '',
+//     word: '',
+//     isClicked: false
+//   },
+//   {
+//     colour: '',
+//     word: '',
+//     isClicked: false
+//   },
+//   {
+//     colour: '',
+//     word: '',
+//     isClicked: false
+//   },
+//   {
+//     colour: '',
+//     word: '',
+//     isClicked: false
+//   },
+//   {
+//     colour: '',
+//     word: '',
+//     isClicked: false
+//   },
+//   {
+//     colour: '',
+//     word: '',
+//     isClicked: false
+//   },
+//   {
+//     colour: '',
+//     word: '',
+//     isClicked: false
+//   },
+//   {
+//     colour: '',
+//     word: '',
+//     isClicked: false
+//   },
+//   {
+//     colour: '',
+//     word: '',
+//     isClicked: false
+//   },
+//   {
+//     colour: '',
+//     word: '',
+//     isClicked: false
+//   },
+//   {
+//     colour: '',
+//     word: '',
+//     isClicked: false
+//   },
+//   {
+//     colour: '',
+//     word: '',
+//     isClicked: false
+//   },
+//   {
+//     colour: '',
+//     word: '',
+//     isClicked: false
+//   },
+//   {
+//     colour: '',
+//     word: '',
+//     isClicked: false
+//   },
+//   {
+//     colour: '',
+//     word: '',
+//     isClicked: false
+//   },
+//   {
+//     colour: '',
+//     word: '',
+//     isClicked: false
+//   },
+//   {
+//     colour: '',
+//     word: '',
+//     isClicked: false
+//   },
+//   {
+//     colour: '',
+//     word: '',
+//     isClicked: false
+//   },
+//   {
+//     colour: '',
+//     word: '',
+//     isClicked: false
+//   },
+//   {
+//     colour: '',
+//     word: '',
+//     isClicked: false
+//   },
+//   {
+//     colour: '',
+//     word: '',
+//     isClicked: false
+//   },
+// ])
 
 db.prePlayCards.insertMany([
   {colour: 'Red'},

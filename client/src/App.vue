@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <button type="submit" v-on:click="setCurrentCards">Start Game</button>
+    <button type="submit" v-on:click="startGame">Start Game</button>
     <score-bar id="score-bar" :redScore="redScore" :blueScore="blueScore"></score-bar>
     <grid id="grid" :cards="currentCards"></grid>
     <button type="submit" value="test">Placeholder</button>
@@ -19,9 +19,12 @@ export default {
   },
   data() {
     return {
+      gameOn: false,
       cards: [],
       words: [],
       currentCards: [],
+      redTurn: false,
+      blueTurn: false,
       redScore: 9,
       blueScore: 8
     }
@@ -67,6 +70,12 @@ export default {
         card.isClicked = false,
         card.isHidden = true
       })
+    },
+
+    startGame() {
+      this.setCurrentCards();
+      this.gameOn = true; 
+      this.redTurn = true;
     },
 
     setCurrentCards(){
