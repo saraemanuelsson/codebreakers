@@ -3,7 +3,7 @@
     <button v-on:click="toggleGameState">{{ gameStateText }}</button>
     <score-bar id="score-bar" :redScore="redScore" :blueScore="blueScore"></score-bar>
     <grid id="grid" :cards="currentCards"></grid>
-    <user :cards="currentCards"></user>
+    <user id="user-bar" :cards="currentCards"></user>
   </div>
 </template>
 
@@ -37,6 +37,9 @@ export default {
     this.fetchCards();
 
     eventBus.$on("display-to-app", (cards) => {
+      this.currentCards = cards
+    })
+    eventBus.$on("hide-to-app", (cards) => {
       this.currentCards = cards
     })
 
@@ -138,6 +141,9 @@ export default {
 *{
   margin: 0;
 }
+#user-bar{
+  grid-column: 3/5;
+}
 #score-bar{
   grid-column: 2/5;
 }
@@ -153,6 +159,7 @@ export default {
   grid-template-columns: 26% 16% 16% 16% 26%;
 }
 #grid {
+  box-shadow: -5px 7px 62px 16px rgb(177, 24, 24);
   border: 1rem solid rgba(75, 72, 72, 0.719);
   background-color: rgba(0, 0, 0, 0.678);
   grid-column: 2/5;

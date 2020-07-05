@@ -1,6 +1,7 @@
 <template>
   <div id="score-bar">
       <score-card></score-card>
+
     </div>
 </template>
 

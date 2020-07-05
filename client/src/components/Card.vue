@@ -1,6 +1,6 @@
 <template>
   <div class="card">
-    <div v-bind:id="card.isHidden">
+    <div :id="Red">
       <div v-bind:id="card.colour">
       <p>{{card.word}}</p>
       </div>
@@ -14,21 +14,33 @@ import {eventBus} from '@/main';
 export default {
   name: 'card',
   props: ['card'],
-  mounted() {
-    eventBus.$on('display-colours', this.showCards())
-    eventBus.$on('hide-colours', this.showCards())
-  },
+  // mounted() {
+  //   eventBus.$on('display-colours', this.showCards())
+  //   eventBus.$on('hide-colours', this.showCards())
+  // },
   methods: {
-    showCards(){
-      console.log();
-      
-      this.card.isHidden = !this.card.isHidden
+    // showCards(){
+    //   this.card.isHidden = !this.card.isHidden
+    // }
+  // },
+    gameStateText() {
+      return this.gameOn ? 'End turn' : 'Start game'
     }
+  },
+    computed: {
+    showRed () {
+      return this.card.isHidden ? null : 'red'
+    },
   }
 }
+
 </script>
 
 <style>
+
+#Red{
+  color:crimson;
+}
 .card{
   color: rgb(51, 51, 50);
   text-align: center;
@@ -43,6 +55,9 @@ export default {
 p{
   font-size: 0.8vw;
   padding-top: 40%;
+}
+.card > #false {
+  color: pink;
 }
 .card > #true > #Red {
   transition: 0.5s;

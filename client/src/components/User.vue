@@ -1,24 +1,30 @@
 <template>
+<div id="spy-guess-buttons">
   <button v-on:click="displayColours">SpyMaster</button>
-  <!-- <button v-on:mousedown="displayColours" v-on:mouseclick="hideColours">SpyMaster</button> -->
+  <button v-on:click="hideColours">Guesser</button>
+  </div>
+  <!-- <button v-on:mousedown="displayColours" v-on:mouseup="hideColours">SpyMaster</button> -->
 
 </template>
 
 <script>
 import {eventBus} from '@/main'
-export default {
+export default  {
     name: "user",
     props: ['cards'],
     methods: {
         displayColours() {
             console.log(this.cards)
             const unHiddenCards = this.cards.map((card) => card.isHidden = false)
-            eventBus.$emit("display-to-app", unHiddenCards)
+            eventBus.$emit("display-to-app", this.cards)
         },
+        
         hideColours() {
             console.log(this.cards)
             const hiddenCards = this.cards.map((card) => card.isHidden = true)
-            eventBus.$emit("display-to-app", hiddenCards)
+            eventBus.$emit("hide-to-app", this.cards)
+            console.log(this.cards)
+            
         }
     }
     // methods: {
