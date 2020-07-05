@@ -46,12 +46,12 @@ p{
   font-size: 0.8vw;
   padding-top: 40%;
 }
-#card.Red{
+/* #card.Red{
   transition: 0.5s;
   border-radius:50%;
   background-color: rgb(204, 23, 23);
   color: white;
-}
+} */
 
 #card.Red:hover{
   transition: 0.5s;
