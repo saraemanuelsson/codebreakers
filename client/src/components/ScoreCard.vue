@@ -2,7 +2,7 @@
 <div id="score-wrapper">
   <div id="redwrapper"><h2 id="redcards">red cards</h2></div>
   <div id="bluewrapper"><h2 id="bluecards">blue cards</h2></div>
-  </div>
+</div>
 </template>
 
 <script>

@@ -1,14 +1,21 @@
 <template>
-  <div id="card" v-bind:class="card.colour">
+  <div id="card" v-bind:class="card.colour" v-on:click="clickCard">
     <p>{{card.word}}</p>
   </div>
 </template>
 
 <script>
-
+import {eventBus} from "@/main"
 export default {
 name: 'card',
-props: ['card']
+props: ['card'],
+
+methods: {
+  clickCard: function() {
+    eventBus.$emit('card-selected', this.card)
+  }
+}
+
 }
 </script>
 
