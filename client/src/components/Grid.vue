@@ -17,8 +17,6 @@ export default {
 
 <style>
 #card {
-    margin-right: auto;
-    margin-left: auto;
     background-color: rgb(150, 123, 88);
 }
 </style>

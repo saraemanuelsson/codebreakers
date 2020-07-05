@@ -1,24 +1,29 @@
 <template>
   <div id="app">
     <button type="submit" v-on:click="setCurrentCards">Start Game</button>
+    <score-bar id="score-bar" :redScore="redScore" :blueScore="blueScore"></score-bar>
     <grid id="grid" :cards="currentCards"></grid>
-
+    <button type="submit" value="test">Placeholder</button>
   </div>
 </template>
 
 <script>
 import Grid from "./components/Grid.vue";
+import ScoreBar from "./components/ScoreBar"
 import CodeBreakerService from "./services/CodebreakerService";
 export default {
   name: 'App',
   components: {
-    "grid": Grid
+    "grid": Grid,
+    "score-bar": ScoreBar
   },
   data() {
     return {
       cards: [],
       words: [],
-      currentCards: []
+      currentCards: [],
+      redScore: 9,
+      blueScore: 8
     }
   },
   mounted() {
@@ -74,18 +79,31 @@ export default {
 
 <style>
 @import url(https://fonts.googleapis.com/css?family=Anton:regular);
-#app {font-family: "Anton";
+*{
+  margin: 0;
+}
+#score-bar{
+  grid-column: 2/5;
+}
+#app {
+  background-image: url('../public/Codenamestable.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position-x: left;
+  background-position-y: bottom;
+  font-family: "Anton";
   display: grid;
   grid-template-columns: 26% 16% 16% 16% 26%;
 }
 #grid {
-  border: 1rem solid rgb(75, 72, 72);
-  background-color: rgb(0, 0, 0);
+  border: 1rem solid rgba(75, 72, 72, 0.719);
+  background-color: rgba(0, 0, 0, 0.678);
   grid-column: 2/5;
   display: grid;
   grid-template-columns: 20% 20% 20% 20% 20%;
   border-radius: 2%;
-  padding: 0.5vw;
+  padding: 0.8vw;
 }
 button{
   color: rgb(89, 175, 2);

@@ -19,13 +19,14 @@ props: ['card']
   width: 6vw;
   height: 6vw;
   margin: 0.6vw;
-  padding: 0.6vw;
+  margin-left: 0.6vw;
+  padding: 0.9vw;
   border-radius: 15%;
 
 }
 p{
   font-size: 1vw;
-  padding-top: 25%;
+  padding-top: 40%;
 }
 #card.Red:hover{
   transition: 0.5s;
