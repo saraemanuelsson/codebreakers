@@ -76,6 +76,7 @@ export default {
 
     startGame() {
       const gameStatus = this.fetchGameStatus()
+
       this.setCurrentCards()
       this.gameOn = true; 
       this.redTurn = true;
@@ -92,14 +93,16 @@ export default {
     },
 
     fetchGameStatus() { 
-      return CodeBreakerService.getGameStatus()
-      console.log(CodeBreakerService.getGameStatus());
-      
+      CodeBreakerService.getGameStatus()
+      .then(gamestatus => {
+        const game = gamestatus[0]
+        return game
+      })
     },
 
 
     setCurrentCards(){
-      // this.shuffle(this.words)
+      this.shuffle(this.cards)
       this.currentCards = this.cards
     }
   }
