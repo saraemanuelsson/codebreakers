@@ -1,17 +1,15 @@
 use codebreaker;
 db.dropDatabase();
 
-db.remainingCards.insertMany([
-  {red: '9'},
-  {blue: '8'}
-])
-
 db.gameStatus.insertMany([
   {
     gameOn: false,
     redTurn: false,
     blueTurn: false,
-    currentCards: []
+    currentCards: [],
+    redScore: 9,
+    blueScore: 8,
+    round: 0
   }
 ])
 

@@ -13,22 +13,17 @@ MongoClient.connect('mongodb://localhost:27017')
   .then((player) => {
     const db = player.db('codebreaker');
     const prePlayCardsCollection = db.collection('prePlayCards');
-    const PlayCardsCollection = db.collection('PlayCards');
     const wordsCollection = db.collection('words');
-    const remainingCardsCollection = db.collection('remainingCards');
+    const gameStatusCollection = db.collection('gameStatus');
     
-
     const prePlayCardsRouter = createRouter(prePlayCardsCollection);
     app.use('/api/preplaycards', prePlayCardsRouter);
-
-    const playCardsRouter = createRouter(PlayCardsCollection);
-    app.use('/api/playcards', playCardsRouter);
 
     const wordsRouter = createRouter(wordsCollection);
     app.use('/api/words', wordsRouter);
 
-    const remainingCardsRouter = createRouter(remainingCardsCollection);
-    app.use('/api/remainingcards', remainingCardsRouter);
+    const gameStatusRouter = createRouter(gameStatusCollection);
+    app.use('/api/gamestatus', gameStatusRouter);
   })
   .catch(console.err);
 

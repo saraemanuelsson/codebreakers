@@ -1,6 +1,7 @@
 const baseURL = 'http://localhost:3000/api/'
 const cards = "preplaycards"
 const words = "words"
+const 
 
 export default {
     getCards() {
@@ -12,5 +13,9 @@ export default {
         return fetch(baseURL+words)
         .then(res => res.json())
         // delay: 200
+    },
+
+    updateGameStatus() {
+        
     }
 }
