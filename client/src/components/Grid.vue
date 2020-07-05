@@ -1,5 +1,5 @@
 <template>
-    <div id="cardsGrid">
+    <div v-if="cards.length != 0" id="cardsGrid">
         <card id="card" v-for="card, index in cards" :key="index" :card="card"></card>
     </div>
 </template>
