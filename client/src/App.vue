@@ -4,6 +4,7 @@
     <score-bar id="score-bar" :redScore="redScore" :blueScore="blueScore"></score-bar>
     <grid id="grid" :cards="currentCards"></grid>
     <user id="user-bar" :cards="currentCards"></user>
+    <!-- <score-card :redScore="redScore" :blueScore="blueScore"></score-card> -->
   </div>
 </template>
 
@@ -12,13 +13,15 @@ import Grid from "./components/Grid.vue";
 import ScoreBar from "./components/ScoreBar"
 import CodeBreakerService from "./services/CodebreakerService";
 import User from "./components/User"
+import ScoreCard from "./components/ScoreCard"
 import {eventBus} from './main'
 export default {
   name: 'App',
   components: {
     "grid": Grid,
     "score-bar": ScoreBar,
-    "user": User
+    "user": User,
+    "score-card": ScoreCard
   },
   data() {
     return {

@@ -1,5 +1,6 @@
 <template>
   <div id="score-bar">
+      <!-- <h2>{{redScore}}</h2> -->
       <score-card></score-card>
 
     </div>
@@ -18,6 +19,6 @@ components: {
 <style>
 #score-bar{
     justify-content: space-evenly;
-color:none;
+/* color:white; */
 }
 </style>

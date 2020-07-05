@@ -1,13 +1,13 @@
 <template>
 <div id="score-wrapper">
-  <div id="redwrapper"><h2 id="redcards">red cards</h2>
-  <h2 id="redcards">red cards</h2>
-  <h2 id="redcards">red cards</h2>
-  <h2 id="redcards">red cards</h2>
-  <h2 id="redcards">red cards</h2>
-  <h2 id="redcards">red cards</h2>
-  <h2 id="redcards">red cards</h2>
-  <h2 id="redcards">red cards</h2></div>
+  <div id="redwrapper"><h2 id="redcards"></h2>
+  <h2 id="redcards"></h2>
+  <h2 id="redcards"></h2>
+  <h2 id="redcards"></h2>
+  <h2 id="redcards"></h2>
+  <h2 id="redcards"></h2>
+  <h2 id="redcards"></h2>
+  <h2 id="redcards"></h2></div>
   <div id="bluewrapper"><h2 id="bluecards">blue cards</h2>
   <h2 id="bluecards">blue cards</h2>
   <h2 id="bluecards">blue cards</h2>
@@ -43,7 +43,7 @@ flex-direction: row;
 #redcards{
     box-shadow: -16px -1px 16px -4px rgba(0,0,0,0.75);
 
-    color:rgba(105, 105, 105, 0);
+    color:rgba(105, 105, 105, 0.728);
     height: 50px;
     width: 36px;
     background-color: rgba(139, 0, 0, 0.722);
