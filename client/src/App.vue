@@ -3,7 +3,7 @@
     <button v-on:click="toggleGameState">{{ gameStateText }}</button>
     <score-bar id="score-bar" :redScore="redScore" :blueScore="blueScore"></score-bar>
     <grid id="grid" :cards="currentCards"></grid>
-    <button value="test">Placeholder</button>
+    <user></user>
   </div>
 </template>
 
@@ -11,11 +11,14 @@
 import Grid from "./components/Grid.vue";
 import ScoreBar from "./components/ScoreBar"
 import CodeBreakerService from "./services/CodebreakerService";
+import User from "./components/User"
+import {eventBus} from './main'
 export default {
   name: 'App',
   components: {
     "grid": Grid,
-    "score-bar": ScoreBar
+    "score-bar": ScoreBar,
+    "user": User
   },
   data() {
     return {
@@ -32,6 +35,10 @@ export default {
   },
   mounted() {
     this.fetchCards();
+
+    eventBus.$on("display-to-app", (cards) => {
+      this.currentCards = cards
+    })
 
   },
   computed: {
