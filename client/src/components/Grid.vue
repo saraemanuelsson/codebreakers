@@ -1,6 +1,6 @@
 <template>
     <div v-if="cards.length != 0" id="cardsGrid">
-        <card id="card" v-for="card, index in cards" :key="index" :card="card"></card>
+        <card id="looped-card" v-for="card, index in cards" :key="index" :card="card"></card>
     </div>
 </template>
 
@@ -16,7 +16,7 @@ export default {
 </script>
 
 <style>
-#card {
+#looped-card {
     background-color: rgb(150, 123, 88);
 }
 </style>
