@@ -13,7 +13,7 @@
       </div>
     </div>
     <div v-else>
-      <div class="hidden">
+      <div class="card.colour">
         {{card.word}}
       </div>
     </div>

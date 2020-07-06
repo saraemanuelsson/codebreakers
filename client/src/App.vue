@@ -73,21 +73,22 @@ export default {
     fetchCards() {
       
       const promise1 = CodeBreakerService.getWords()
-      .then(words => {        
-        this.words = words
-      })
-      .then(() => {
-        this.shuffle(this.words)
-      })
+      // .then(words => {        
+      //   this.words = words
+      // })
+      // .then(() => {
+      //   this.shuffle(this.words)
+      // })
 
       const promise2 = CodeBreakerService.getCards()
-      .then(cards => {
-        this.cards = cards
-      })
+      // .then(cards => {
+      //   this.cards = cards
+      // })
 
       const promises = [promise1, promise2]
 
       Promise.all(promises)
+      .then((data) => console.log("data", data))
       .then(() => this.createCard())
       .then(() => this.shuffle(this.cards))
     },
@@ -106,27 +107,28 @@ export default {
     startGame() {
       const gameStatus = this.fetchGameStatus()
 
-      this.setCurrentCards()
-      this.gameOn = true; 
-      this.redTurn = true;
-      this.round = this.round + 1;
       
-
-      const updatedGameStatus = {
-        ...gameStatus,
-        gameOn: this.gameOn,
-        currentCards: this.currentCards,
-        round: this.round
-      }
-      
-      CodeBreakerService.updateGameStatus(updatedGameStatus);
     },
 
     fetchGameStatus() { 
       CodeBreakerService.getGameStatus()
-      .then(gamestatus => {
-        const game = gamestatus[0]
-        return game
+      .then(gameStatuses => {
+        const gameStatus = gameStatuses[0]
+        this.setCurrentCards()
+        this.gameOn = true; 
+        this.redTurn = true;
+        this.round = this.round + 1;
+      
+        console.log("game status", gameStatus);
+    
+        const updatedGameStatus = {
+          ...gameStatus,
+          gameOn: this.gameOn,
+          currentCards: this.currentCards,
+          round: this.round
+      }
+      
+      CodeBreakerService.updateGameStatus(updatedGameStatus);
       })
     },
 

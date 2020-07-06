@@ -22,8 +22,8 @@ export default {
 
     updateGameStatus(payload) {
         console.log(payload);
-        
-        return fetch(baseURL+gameStatus+"/"+"5f01a87eeff0c2afb3688082", {
+        const id = payload._id
+        return fetch(baseURL+gameStatus+"/"+id, {
             method: 'PUT',
             body: JSON.stringify(payload),
             headers: { "Content-Type": "application/json"}
