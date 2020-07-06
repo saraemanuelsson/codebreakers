@@ -177,7 +177,6 @@ html {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  scroll-behavior: smooth;
 }
 
 #app {
