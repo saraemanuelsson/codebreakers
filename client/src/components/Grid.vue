@@ -1,5 +1,5 @@
 <template>
-    <div v-if="cards.length != 0" id="cardsGrid">
+    <div v-if="gameOn" id="cardsGrid">
         <card id="looped-card" v-for="card, index in cards" :key="index" :card="card"></card>
     </div>
 </template>
@@ -8,7 +8,7 @@
 import Card from './Card'
 export default {
     name: 'grid',
-    props: ['cards'],
+    props: ['cards', "gameOn"],
     components: {
         'card': Card
     }

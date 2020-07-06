@@ -2,8 +2,8 @@
   <div id="app">
     <button v-on:click="toggleGameState">{{ gameStateText }}</button>
     <score-bar id="score-bar" :redScore="redScore" :blueScore="blueScore"></score-bar>
-    <grid id="grid" :cards="currentCards"></grid>
-    <user id="user-bar" :cards="currentCards"></user>
+    <grid id="grid" :cards="cards" :gameOn="gameOn"></grid>
+    <user id="user-bar" :cards="cards"></user>
     <!-- <score-card :redScore="redScore" :blueScore="blueScore"></score-card> -->
   </div>
 </template>
@@ -28,7 +28,7 @@ export default {
       gameOn: false,
       cards: [],
       words: [],
-      currentCards: [],
+      // currentCards: [],
       redTurn: true,
       blueTurn: false,
       redScore: 9,
@@ -41,10 +41,10 @@ export default {
     this.fetchCards();
 
     eventBus.$on("display-to-app", (cards) => {
-      this.currentCards = cards
+      this.cards = cards
     })
     eventBus.$on("hide-to-app", (cards) => {
-      this.currentCards = cards
+      this.cards = cards
     })
 
     eventBus.$on("card-selected", card => this.clickCard(card));
@@ -60,8 +60,8 @@ export default {
 
 
     clickCard(card) {
-      const index = this.currentCards.indexOf(card);
-      this.currentCards[index].isClicked = true;
+      const index = this.cards.indexOf(card);
+      this.cards[index].isClicked = true;
       // this.currentCards[index].isHidden = false;
     },
     
@@ -76,31 +76,30 @@ export default {
       const shuffled = array.sort(() => 0.5 - Math.random());
       return shuffled;
     },
-    cardSplice(cards) {
-      const shuffledWords = this.shuffle(this.words)
-      return shuffledWords.splice(0, 25)
-    },
+
     fetchCards() {
       
-      const promise1 = CodeBreakerService.getWords()
-      // .then(words => {        
-      //   this.words = words
-      // })
-      // .then(() => {
-      //   this.shuffle(this.words)
-      // })
-
-      const promise2 = CodeBreakerService.getCards()
-      // .then(cards => {
-      //   this.cards = cards
-      // })
-
-      const promises = [promise1, promise2]
-
+      const words = CodeBreakerService.getWords()
+      const cards = CodeBreakerService.getCards()
+      
+      const promises = [words, cards]
+      
       Promise.all(promises)
-      .then((data) => console.log("data", data))
+      
+      .then((result) => {        
+        this.words = result[0]
+        this.cards = result[1]
+      })
+      .then(() => {
+        this.shuffle(this.words)
+      })
+      .then(() => console.log("words:", this.words)
+      )
+      .then(() => console.log("cards:", this.cards)
+      )
       .then(() => this.createCard())
       .then(() => this.shuffle(this.cards))
+
     },
     createCard(){
       return this.cards.map((card, i) => {
@@ -115,16 +114,14 @@ export default {
     },
 
     startGame() {
-      const gameStatus = this.fetchGameStatus()
-
-      
+      this.fetchGameStatus()
     },
 
     fetchGameStatus() { 
       CodeBreakerService.getGameStatus()
       .then(gameStatuses => {
         const gameStatus = gameStatuses[0]
-        this.setCurrentCards()
+        // this.setCurrentCards()
         this.gameOn = true; 
         this.redTurn = true;
         this.round = this.round + 1;
@@ -134,19 +131,18 @@ export default {
         const updatedGameStatus = {
           ...gameStatus,
           gameOn: this.gameOn,
-          currentCards: this.currentCards,
+          cards: this.cards,
           round: this.round
       }
       
       CodeBreakerService.updateGameStatus(updatedGameStatus);
       })
-    },
-
-
-    setCurrentCards(){
-      this.shuffle(this.cards)
-      this.currentCards = this.cards
     }
+
+
+    // setCurrentCards(){
+    //   this.shuffle(this.cards)
+    // }
   }
 }
 </script>
