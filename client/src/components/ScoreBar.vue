@@ -1,7 +1,11 @@
 <template>
   <div id="score-bar">
-      <!-- <h2>{{redScore}}</h2> -->
-      <score-card></score-card>
+      <h2>{{redScore}}</h2>
+      <h2>{{blueScore}}</h2>
+      <score-card>
+
+          
+      </score-card>
 
     </div>
 </template>

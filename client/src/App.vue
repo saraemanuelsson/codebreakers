@@ -4,7 +4,6 @@
     <score-bar id="score-bar" :redScore="redScore" :blueScore="blueScore"></score-bar>
     <grid id="grid" :cards="cards" :gameOn="gameOn"></grid>
     <user id="user-bar" :cards="cards"></user>
-    <!-- <score-card :redScore="redScore" :blueScore="blueScore"></score-card> -->
   </div>
 </template>
 
@@ -60,7 +59,19 @@ export default {
 
     clickCard(card) {
       const index = this.cards.indexOf(card);
+
       this.cards[index].isClicked = true;
+
+      if (this.cards[index].colour === 'Blue') {
+        this.blueScore -= 1
+        return this.blueScore
+      }
+
+      if (this.cards[index].colour === 'Red') {
+        this.redScore -= 1
+        return this.redScore
+      }
+      
     },
     
     nextTurn(){

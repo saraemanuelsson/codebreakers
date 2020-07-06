@@ -1,6 +1,6 @@
 <template>
 <div id="score-wrapper">
-  <div id="redwrapper"><h2 id="redcards"></h2>
+  <!-- <div id="redwrapper"><h2 id="redcards"></h2>
   <h2 id="redcards"></h2>
   <h2 id="redcards"></h2>
   <h2 id="redcards"></h2>
@@ -15,15 +15,25 @@
   <h2 id="bluecards">blue cards</h2>
   <h2 id="bluecards">blue cards</h2>
   <h2 id="bluecards">blue cards</h2>
-  <h2 id="bluecards">blue cards</h2>
-  </div>
+  <h2 id="bluecards">blue cards</h2> -->
+<p> {{ redScore }} </p>
+
+<p> {{ blueScore }} </p>
+  <!-- </div> -->
   </div>
 </template>
 
 <script>
+import App from '../App.vue';
+
 export default {
-    name: 'scoreCard',
-    props: ['scoreCard']
+    name: 'scoreCard', 
+    props: ['scoreCard', 'blueScore', 'redScore'],
+    methods: {
+        testing(){
+            console.log(this.blueScore)
+        }
+    }
 
 }
 </script>
