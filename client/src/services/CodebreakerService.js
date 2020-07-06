@@ -21,7 +21,6 @@ export default {
     },
 
     updateGameStatus(payload) {
-        console.log(payload);
         const id = payload._id
         return fetch(baseURL+gameStatus+"/"+id, {
             method: 'PUT',

@@ -27,13 +27,11 @@ export default {
       gameOn: false,
       cards: [],
       words: [],
-      // currentCards: [],
       redTurn: true,
       blueTurn: false,
       redScore: 9,
       blueScore: 8,
       round: 0
-      // selectedCard: null
     }
   },
   mounted() {
@@ -94,14 +92,13 @@ export default {
       Promise.all(promises)
       
       .then((result) => {        
-        this.words = result[0]
+        this.words = this.shuffle(result[0])
         this.cards = this.createCard(result[1])
       })
-      .then(() => {
-        this.shuffle(this.words)
-      })
+      // .then(() => {
+      //   this.shuffle(this.words)
+      // })
       .then(() => this.createCard())
-      .then(() => this.shuffle(this.cards))
 
     },
     createCard(cardsFromDatabase){
@@ -120,7 +117,7 @@ export default {
     },
 
     startGame() {
-      // this.shuffle(this.cards)
+      this.shuffle(this.cards)
       this.fetchGameStatus()
     },
 
@@ -128,12 +125,9 @@ export default {
       CodeBreakerService.getGameStatus()
       .then(gameStatuses => {
         const gameStatus = gameStatuses[0]
-        // this.setCurrentCards()
         this.gameOn = true; 
         this.redTurn = true;
         this.round = this.round + 1;
-      
-        console.log("game status", gameStatus);
     
         const updatedGameStatus = {
           ...gameStatus,
