@@ -197,16 +197,12 @@ html {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position-x: left;
- 
-
-#grid .Blue {
-  box-shadow: -5px 7px 62px 16px rgb(10, 136, 177);
-}
- background-position-y: bottom;
+  background-position-y: bottom;
   font-family: "Bungee";
   display: grid;
   grid-template-columns: 26% 16% 16% 16% 26%;
 }
+
 #grid {
   box-shadow: -5px 7px 62px 16px rgb(177, 24, 24);
   border: 1rem solid rgba(75, 72, 72, 0.719);
