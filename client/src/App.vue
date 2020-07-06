@@ -1,9 +1,9 @@
 <template>
   <div id="app">
     <button v-on:click="toggleGameState">{{ gameStateText }}</button>
-    <score-bar id="score-bar" :redScore="redScore" :blueScore="blueScore"></score-bar>
+    <score-bar id="score-bar" :redScore="redScore" :blueScore="blueScore" :gameOn="gameOn"></score-bar>
     <grid id="grid" :cards="cards" :gameOn="gameOn"></grid>
-    <user id="user-bar" :cards="cards"></user>
+    <user id="user-bar" :cards="cards" :gameOn="gameOn"></user>
   </div>
 </template>
 
@@ -69,12 +69,16 @@ export default {
         this.redScore -= 1
         return this.redScore
       }
+
+      this.saveNewMove();
       
     },
     
     nextTurn(){
       this.redTurn = !this.redTurn
       this.blueTurn = !this.blueTurn
+      this.saveNewMove()
+ 
     },
     
     shuffle(array) {
@@ -95,9 +99,6 @@ export default {
         this.words = this.shuffle(result[0])
         this.cards = this.createCard(result[1])
       })
-      // .then(() => {
-      //   this.shuffle(this.words)
-      // })
       .then(() => this.createCard())
 
     },
@@ -118,39 +119,61 @@ export default {
 
     startGame() {
       this.shuffle(this.cards)
-      this.fetchGameStatus()
+      this.saveNewGameStatus()
     },
 
-    fetchGameStatus() { 
+    saveNewGameStatus() { 
       CodeBreakerService.getGameStatus()
       .then(gameStatuses => {
         const gameStatus = gameStatuses[0]
         this.gameOn = true; 
         this.redTurn = true;
-        this.round = this.round + 1;
-    
+        this.round = this.round + 1;    
         const updatedGameStatus = {
           ...gameStatus,
           gameOn: this.gameOn,
           cards: this.cards,
-          round: this.round
+          round: this.round,
+          redScore: this.redScore,
+          blueScore: this.blueScore,
+          redTurn: this.redTurn,
+          blueTurn: this.blueTurn
+      }
+      
+      CodeBreakerService.updateGameStatus(updatedGameStatus);
+      })
+    },
+
+    saveNewMove() { 
+      CodeBreakerService.getGameStatus()
+      .then(gameStatuses => {
+        const gameStatus = gameStatuses[0]   
+        const updatedGameStatus = {
+          ...gameStatus,
+          cards: this.cards,
+          redTurn: this.redTurn,
+          blueTurn: this.blueTurn
       }
       
       CodeBreakerService.updateGameStatus(updatedGameStatus);
       })
     }
-
-
-    // setCurrentCards(){
-    //   this.shuffle(this.cards)
-    // }
   }
 }
 </script>
 
 <style>
-@import url(https://fonts.googleapis.com/css?family=Bungee:regular);
-*{margin: 0;
+
+html {
+  background: url('../public/Codenamestable.png') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  scroll-behavior: smooth;
+}
+
+#app {
 }
 #user-bar{
   grid-column: 3/5;

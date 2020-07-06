@@ -1,7 +1,5 @@
 <template>
-  <div id="score-bar">
-<!-- <h2>{{redScore}}</h2>
-        <h2>{{blueScore}}</h2> -->
+  <div v-if="gameOn" id="score-bar">
       <score-card :redScore="redScore" :blueScore="blueScore"> </score-card>
   </div>
 </template>
@@ -11,7 +9,7 @@ import ScoreCard from './ScoreCard'
 
 export default {
 name: 'scoreBar',
-props: ['redScore', 'blueScore'],
+props: ['redScore', 'blueScore', 'gameOn'],
 components: {
     'score-card': ScoreCard
 }}
@@ -20,6 +18,5 @@ components: {
 <style>
 #score-bar{
     justify-content: space-evenly;
-/* color:white; */
 }
 </style>

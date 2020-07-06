@@ -1,5 +1,5 @@
 <template>
-    <div id="spy-guess-buttons">
+    <div v-if="gameOn" id="spy-guess-buttons">
         <button v-on:click="displayColours">Codebreaker</button>
         <button v-on:click="hideColours">Guesser</button>
     </div>
@@ -9,9 +9,10 @@
 
 <script>
 import {eventBus} from '@/main'
+
 export default  {
     name: "user",
-    props: ['cards'],
+    props: ['cards', 'gameOn'],
     methods: {
         displayColours() {
             console.log(this.cards)
