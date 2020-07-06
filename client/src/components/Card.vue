@@ -6,8 +6,12 @@
       </div>
     </div>
   </div> -->
-<div class="card">
-    <div v-if="card.isHidden === false">
+<div class="card" v-on:click="clickCard">
+  <div v-bind:class="[!card.isHidden || card.isClicked ? card.colour : card]">
+    <p>{{card.word}}</p>
+  </div>
+    
+    <!-- <div v-if="card.isHidden === false">
       <div :class="card.colour">
         <p>{{card.word}}</p>
       </div>
@@ -16,8 +20,8 @@
       <div class="card.colour">
         {{card.word}}
       </div>
-    </div>
-    </div>
+    </div> -->
+</div>
 </template>
 
 <script>
@@ -31,6 +35,10 @@ export default {
   //   eventBus.$on('hide-colours', this.showCards())
   // },
   methods: {
+    clickCard: function() {
+    eventBus.$emit('card-selected', this.card)
+  },
+
     showCards(){
       this.card.isHidden = !this.card.isHidden
     }
@@ -55,7 +63,7 @@ export default {
   width: 6vw;
   height: 6vw;
   margin: 0.6vw;
-  margin-left: 0.6vw;
+  margin-left: 0.59vw;
   padding: 0.9vw;
   border-radius: 15%;
 

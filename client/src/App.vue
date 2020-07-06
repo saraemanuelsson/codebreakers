@@ -58,11 +58,9 @@ export default {
   },
   methods: {
 
-
     clickCard(card) {
       const index = this.cards.indexOf(card);
       this.cards[index].isClicked = true;
-      // this.currentCards[index].isHidden = false;
     },
     
     nextTurn(){
@@ -88,24 +86,23 @@ export default {
       
       .then((result) => {        
         this.words = result[0]
-        this.cards = result[1]
+        this.cards = this.createCard(result[1])
       })
       .then(() => {
         this.shuffle(this.words)
       })
-      .then(() => console.log("words:", this.words)
-      )
-      .then(() => console.log("cards:", this.cards)
-      )
       .then(() => this.createCard())
       .then(() => this.shuffle(this.cards))
 
     },
-    createCard(){
-      return this.cards.map((card, i) => {
-        card.word = this.words[i].word,
-        card.isClicked = false,
-        card.isHidden = true
+    createCard(cardsFromDatabase){
+      return cardsFromDatabase.map((card, i) => {
+        return {
+          ...card,
+          word: this.words[i].word,
+          isClicked: false,
+          isHidden: true
+        }
       })
     },
 
@@ -114,6 +111,7 @@ export default {
     },
 
     startGame() {
+      // this.shuffle(this.cards)
       this.fetchGameStatus()
     },
 
