@@ -2,7 +2,7 @@
   <div id="app">
     <button v-on:click="toggleGameState">{{ gameStateText }}</button>
     <score-bar id="score-bar" :redScore="redScore" :blueScore="blueScore" :gameOn="gameOn"></score-bar>
-    <grid id="grid" :cards="cards" :gameOn="gameOn"></grid>
+    <grid id="grid" v-bind:class="[turn === 'Red' ? Red : Blue]" :cards="cards" :gameOn="gameOn"></grid>
     <user id="user-bar" :cards="cards" :gameOn="gameOn"></user>
   </div>
 </template>
@@ -27,8 +27,7 @@ export default {
       gameOn: false,
       cards: [],
       words: [],
-      redTurn: true,
-      blueTurn: false,
+      turn: "Red",
       redScore: 9,
       blueScore: 8,
       round: 0
@@ -59,24 +58,35 @@ export default {
       const index = this.cards.indexOf(card);
 
       this.cards[index].isClicked = true;
+      this.saveNewMove();
+      this.checkIfWrongColour(card);
+      this.addPointsToRightTeam(card);
+      
+    },
 
-      if (this.cards[index].colour === 'Blue') {
+    checkIfWrongColour(card){
+        if (card.colour !== this.turn) {
+        this.nextTurn()
+      };
+    },
+
+    addPointsToRightTeam(card){
+        if (card.colour === 'Blue') {
         this.blueScore -= 1
         return this.blueScore
-      }
-
-      if (this.cards[index].colour === 'Red') {
+        } else if (card.colour === 'Red') {
         this.redScore -= 1
         return this.redScore
-      }
-
-      this.saveNewMove();
-      
+        } 
     },
     
     nextTurn(){
-      this.redTurn = !this.redTurn
-      this.blueTurn = !this.blueTurn
+      
+      if(this.turn === "Red") {
+        this.turn = "Blue"
+      } else {
+        this.turn = "Red"
+      }
       this.saveNewMove()
  
     },
@@ -99,7 +109,6 @@ export default {
         this.words = this.shuffle(result[0])
         this.cards = this.createCard(result[1])
       })
-      .then(() => this.createCard())
 
     },
     createCard(cardsFromDatabase){
@@ -136,8 +145,7 @@ export default {
           round: this.round,
           redScore: this.redScore,
           blueScore: this.blueScore,
-          redTurn: this.redTurn,
-          blueTurn: this.blueTurn
+          turn: this.turn
       }
       
       CodeBreakerService.updateGameStatus(updatedGameStatus);
@@ -151,8 +159,7 @@ export default {
         const updatedGameStatus = {
           ...gameStatus,
           cards: this.cards,
-          redTurn: this.redTurn,
-          blueTurn: this.blueTurn
+          turn: this.turn
       }
       
       CodeBreakerService.updateGameStatus(updatedGameStatus);
@@ -187,7 +194,12 @@ html {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position-x: left;
-  background-position-y: bottom;
+ 
+
+#grid .Blue {
+  box-shadow: -5px 7px 62px 16px rgb(10, 136, 177);
+}
+ background-position-y: bottom;
   font-family: "Bungee";
   display: grid;
   grid-template-columns: 26% 16% 16% 16% 26%;
