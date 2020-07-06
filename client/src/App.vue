@@ -1,9 +1,11 @@
 <template>
   <div id="app">
     <button v-on:click="toggleGameState">{{ gameStateText }}</button>
+    <menu-button id="menu" :gameOn="gameOn"></menu-button>
     <score-bar id="score-bar" :redScore="redScore" :blueScore="blueScore"></score-bar>
     <grid id="grid" :cards="cards" :gameOn="gameOn"></grid>
     <user id="user-bar" :cards="cards"></user>
+    
     <!-- <score-card :redScore="redScore" :blueScore="blueScore"></score-card> -->
   </div>
 </template>
@@ -15,13 +17,15 @@ import ScoreBar from "./components/ScoreBar"
 import CodeBreakerService from "./services/CodebreakerService";
 import User from "./components/User"
 import ScoreCard from "./components/ScoreCard"
+import Menu from "./components/Menu"
 export default {
   name: 'App',
   components: {
     "grid": Grid,
     "score-bar": ScoreBar,
     "user": User,
-    "score-card": ScoreCard
+    "score-card": ScoreCard,
+    "menu-button": Menu
   },
   data() {
     return {
@@ -148,6 +152,9 @@ export default {
 <style>
 @import url(https://fonts.googleapis.com/css?family=Bungee:regular);
 *{margin: 0;
+}
+#menu{
+  grid-column: 5/6;
 }
 #user-bar{
   grid-column: 3/5;
