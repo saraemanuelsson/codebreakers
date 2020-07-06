@@ -7,7 +7,7 @@
           <span></span>
           <span></span>
         <ul id="menu">
-            <li>Start New Game</li>
+            <li @click="startGame">Start New Game</li>
             <li>End Current Game</li>
             <li> <br></li>
             <a href="https://czechgames.com/files/rules/codenames-rules-en.pdf" target="_blank"><li>Show Rules</li></a>
@@ -22,10 +22,18 @@
 
 <script>
 import {eventBus} from '@/main'
+import App from '../App'
 
 export default {
 name: 'menu',
-props: ['gameOn']
+props: ['gameOn'],
+methods: {startGame(){
+    this.$parent.startGame()}
+    // startGame() {
+    //   // this.shuffle(this.cards)
+    //   this.fetchGameStatus()
+    // }
+}
 }
 </script>
 
@@ -132,14 +140,18 @@ nav{
     right: 2
 }
 li {
+    cursor: pointer;
     word-break: break-all;
-    padding: 5%;
+    /* padding: 5%; */
+    /* padding-left: 10%; */
     text-align: right;
     /* background-color: rgba(169, 169, 169, 0.438); */
     margin-left: -70%;
     margin-right: 80%;
 }
-
+a:link, a:visited {
+    color: rgb(0, 0, 0);
+}
 /* li {
     color: rgba(255, 255, 255, 0.827);
     list-style: none;

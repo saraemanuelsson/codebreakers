@@ -52,7 +52,6 @@ export default {
     })
 
     eventBus.$on("card-selected", card => this.clickCard(card));
-    
   },
   computed: {
     gameStateText() {
