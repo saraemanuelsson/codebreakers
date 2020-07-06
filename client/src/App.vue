@@ -75,10 +75,8 @@ export default {
     },
     
     nextTurn(){
-      
       this.redTurn = !this.redTurn
       this.blueTurn = !this.blueTurn
- 
     },
     
     shuffle(array) {
