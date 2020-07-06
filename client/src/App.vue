@@ -3,7 +3,8 @@
     <button v-on:click="toggleGameState">{{ gameStateText }}</button>
     <score-bar id="score-bar" :redScore="redScore" :blueScore="blueScore"></score-bar>
     <grid id="grid" :cards="currentCards"></grid>
-    <button value="test">Placeholder</button>
+    <user id="user-bar" :cards="currentCards"></user>
+    <!-- <score-card :redScore="redScore" :blueScore="blueScore"></score-card> -->
   </div>
 </template>
 
@@ -11,11 +12,16 @@
 import Grid from "./components/Grid.vue";
 import ScoreBar from "./components/ScoreBar"
 import CodeBreakerService from "./services/CodebreakerService";
+import User from "./components/User"
+import ScoreCard from "./components/ScoreCard"
+import {eventBus} from './main'
 export default {
   name: 'App',
   components: {
     "grid": Grid,
-    "score-bar": ScoreBar
+    "score-bar": ScoreBar,
+    "user": User,
+    "score-card": ScoreCard
   },
   data() {
     return {
@@ -32,6 +38,13 @@ export default {
   },
   mounted() {
     this.fetchCards();
+
+    eventBus.$on("display-to-app", (cards) => {
+      this.currentCards = cards
+    })
+    eventBus.$on("hide-to-app", (cards) => {
+      this.currentCards = cards
+    })
 
   },
   computed: {
@@ -60,21 +73,22 @@ export default {
     fetchCards() {
       
       const promise1 = CodeBreakerService.getWords()
-      .then(words => {        
-        this.words = words
-      })
-      .then(() => {
-        this.shuffle(this.words)
-      })
+      // .then(words => {        
+      //   this.words = words
+      // })
+      // .then(() => {
+      //   this.shuffle(this.words)
+      // })
 
       const promise2 = CodeBreakerService.getCards()
-      .then(cards => {
-        this.cards = cards
-      })
+      // .then(cards => {
+      //   this.cards = cards
+      // })
 
       const promises = [promise1, promise2]
 
       Promise.all(promises)
+      .then((data) => console.log("data", data))
       .then(() => this.createCard())
       .then(() => this.shuffle(this.cards))
     },
@@ -93,27 +107,28 @@ export default {
     startGame() {
       const gameStatus = this.fetchGameStatus()
 
-      this.setCurrentCards()
-      this.gameOn = true; 
-      this.redTurn = true;
-      this.round = this.round + 1;
       
-
-      const updatedGameStatus = {
-        ...gameStatus,
-        gameOn: this.gameOn,
-        currentCards: this.currentCards,
-        round: this.round
-      }
-      
-      CodeBreakerService.updateGameStatus(updatedGameStatus);
     },
 
     fetchGameStatus() { 
       CodeBreakerService.getGameStatus()
-      .then(gamestatus => {
-        const game = gamestatus[0]
-        return game
+      .then(gameStatuses => {
+        const gameStatus = gameStatuses[0]
+        this.setCurrentCards()
+        this.gameOn = true; 
+        this.redTurn = true;
+        this.round = this.round + 1;
+      
+        console.log("game status", gameStatus);
+    
+        const updatedGameStatus = {
+          ...gameStatus,
+          gameOn: this.gameOn,
+          currentCards: this.currentCards,
+          round: this.round
+      }
+      
+      CodeBreakerService.updateGameStatus(updatedGameStatus);
       })
     },
 
@@ -128,15 +143,17 @@ export default {
 
 <style>
 @import url(https://fonts.googleapis.com/css?family=Bungee:regular);
-*{
-  margin: 0;
+*{margin: 0;
+}
+#user-bar{
+  grid-column: 3/5;
 }
 #score-bar{
   grid-column: 2/5;
 }
 #app {
   background-image: url('../public/Codenamestable.png');
-  background-size: cover;
+  background-size: 100%;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position-x: left;
@@ -146,6 +163,7 @@ export default {
   grid-template-columns: 26% 16% 16% 16% 26%;
 }
 #grid {
+  box-shadow: -5px 7px 62px 16px rgb(177, 24, 24);
   border: 1rem solid rgba(75, 72, 72, 0.719);
   background-color: rgba(0, 0, 0, 0.678);
   grid-column: 2/5;
