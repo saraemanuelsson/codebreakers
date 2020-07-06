@@ -2,13 +2,22 @@
     <div v-if="team.length != 0" class="modal" v-bind:class="team">
         <h1 v-if="wonGame">Congratulations! Good job {{team}} team!</h1>
         <h1 v-else-if="!wonGame">Oh no! Better luck next time {{team}} team!</h1>
+        <button v-on:click="gameCompleted">New Game</button>
     </div>
 </template>
 
 <script>
+import App from "../App"
+
 export default {
     name: "display-result",
-    props: ["team", "wonGame"]
+    props: ["team", "wonGame"],
+    methods: {
+        gameCompleted(){
+            this.$parent.endGame()
+            this.$parent.startGame()
+        }
+    }
 }
 </script>
 

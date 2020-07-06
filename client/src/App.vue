@@ -71,11 +71,9 @@ export default {
       
       if (card.colour === "Black") {
         this.team = this.turn;
-        this.endGame();
       } else if (this.redScore === 0 || this.blueScore === 0) {
         this.team = card.colour;
         this.wonGame = true;
-        this.endGame();
       };
       
       this.checkIfWrongColour(card);
@@ -83,7 +81,11 @@ export default {
     },
 
     endGame(){
-
+      this.turn = "Red";
+      this.redScore = 9;
+      this.blueScore = 8;
+      this.team = "";
+      this.wonGame = false;
     },
 
     checkIfWrongColour(card){
@@ -129,11 +131,12 @@ export default {
       
       .then((result) => {        
         this.words = this.shuffle(result[0])
-        this.cards = this.createCard(result[1])
+        this.cards = this.shuffle(this.createCard(result[1]))
       })
 
     },
     createCard(cardsFromDatabase){
+      this.shuffle(this.words)
       return cardsFromDatabase.map((card, i) => {
         return {
           ...card,
@@ -149,7 +152,7 @@ export default {
     },
 
     startGame() {
-      this.shuffle(this.cards)
+      this.cards = this.shuffle(this.createCard(this.cards))
       this.saveNewGameStatus()
     },
 
