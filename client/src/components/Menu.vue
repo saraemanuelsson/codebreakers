@@ -15,7 +15,7 @@
             <li>Play with picture cards</li>
         </ul>
      </div>
-    </nav>
+  </nav>
 
         
 </template>
@@ -25,7 +25,7 @@ import {eventBus} from '@/main'
 import App from '../App'
 
 export default {
-name: 'menu',
+name: 'menu-button',
 props: ['gameOn'],
 methods: {startGame(){
     this.$parent.startGame()

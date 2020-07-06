@@ -1,9 +1,10 @@
 <template>
   <div id="app">
     <button v-on:click="toggleGameState">{{ gameStateText }}</button>
-    <score-bar id="score-bar" :redScore="redScore" :blueScore="blueScore" :gameOn="gameOn"></score-bar>
-    <grid id="grid" v-bind:class="[turn === 'Red' ? Red : Blue]" :cards="cards" :gameOn="gameOn"></grid>
-    <user id="user-bar" :cards="cards" :gameOn="gameOn"></user>
+    <menu-button id="menu" :gameOn="gameOn"></menu-button>
+    <score-bar id="score-bar" :redScore="redScore" :blueScore="blueScore"></score-bar>
+    <grid id="grid" :cards="cards" :gameOn="gameOn"></grid>
+    <user id="user-bar" :cards="cards"></user>
   </div>
 </template>
 
@@ -14,13 +15,15 @@ import ScoreBar from "./components/ScoreBar"
 import CodeBreakerService from "./services/CodebreakerService";
 import User from "./components/User"
 import ScoreCard from "./components/ScoreCard"
+import Menu from "./components/Menu"
 export default {
   name: 'App',
   components: {
     "grid": Grid,
     "score-bar": ScoreBar,
     "user": User,
-    "score-card": ScoreCard
+    "score-card": ScoreCard,
+    "menu-button": Menu
   },
   data() {
     return {
@@ -179,7 +182,8 @@ html {
   background-size: cover;
 }
 
-#app {
+#menu{
+  grid-column: 5/6;
 }
 #user-bar{
   grid-column: 3/5;
@@ -188,7 +192,7 @@ html {
   grid-column: 2/5;
 }
 #app {
-  background-image: url('../public/Codenamestable.png');
+  /* background-image: url('../public/Codenamestable.png'); */
   background-size: 100%;
   background-repeat: no-repeat;
   background-attachment: fixed;
