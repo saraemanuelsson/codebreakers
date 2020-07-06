@@ -83,12 +83,12 @@ export default {
       Promise.all(promises)
       
       .then((result) => {        
-        this.words = result[0]
+        this.words = this.shuffle(result[0])
         this.cards = this.createCard(result[1])
       })
-      .then(() => {
-        this.shuffle(this.words)
-      })
+      // .then(() => {
+      //   this.shuffle(this.words)
+      // })
       .then(() => this.createCard())
 
     },
