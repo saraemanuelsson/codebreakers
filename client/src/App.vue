@@ -9,12 +9,12 @@
 </template>
 
 <script>
+import {eventBus} from "@/main";
 import Grid from "./components/Grid.vue";
 import ScoreBar from "./components/ScoreBar"
 import CodeBreakerService from "./services/CodebreakerService";
 import User from "./components/User"
 import ScoreCard from "./components/ScoreCard"
-import {eventBus} from './main'
 export default {
   name: 'App',
   components: {
@@ -34,6 +34,7 @@ export default {
       redScore: 9,
       blueScore: 8,
       round: 0
+      // selectedCard: null
     }
   },
   mounted() {
@@ -46,6 +47,8 @@ export default {
       this.currentCards = cards
     })
 
+    eventBus.$on("card-selected", card => this.clickCard(card));
+    
   },
   computed: {
     gameStateText() {
@@ -54,6 +57,13 @@ export default {
     
   },
   methods: {
+
+
+    clickCard(card) {
+      const index = this.currentCards.indexOf(card);
+      this.currentCards[index].isClicked = true;
+      // this.currentCards[index].isHidden = false;
+    },
     
     nextTurn(){
       

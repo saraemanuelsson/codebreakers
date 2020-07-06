@@ -1,8 +1,8 @@
 <template>
-git p<div id="spy-guess-buttons">
-    <button v-on:click="displayColours">Codebreaker</button>
-    <button v-on:click="hideColours">Guesser</button>
-  </div>
+    <div id="spy-guess-buttons">
+        <button v-on:click="displayColours">Codebreaker</button>
+        <button v-on:click="hideColours">Guesser</button>
+    </div>
   <!-- <button v-on:mousedown="displayColours" v-on:mouseup="hideColours">SpyMaster</button> -->
 
 </template>

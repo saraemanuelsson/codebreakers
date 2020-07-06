@@ -3,7 +3,7 @@
         <card id="looped-card" v-for="card, index in cards" :key="index" :card="card"></card>
     </div>
 </template>
-
+ 
 <script>
 import Card from './Card'
 export default {
