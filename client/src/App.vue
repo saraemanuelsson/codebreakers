@@ -187,6 +187,7 @@ html {
   grid-column: 5/6;
 }
 #user-bar{
+  padding: 15%;
   grid-column: 3/5;
 }
 #score-bar{

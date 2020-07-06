@@ -41,9 +41,22 @@ export default  {
 </script>
 
 <style>
+
 #spy-guess-button{
-    position: relative;
-    top: 150%;
+    font-family: "Bungee";
+    margin-left: -23%;
+    width: 15vw;
+    height:3vw;
+    font-size: 1.5vw;
+    border-style: none;
+    border-radius: 12px;
+    background-color: rgba(240, 248, 255, 0.438);
+    outline: none;
+
+}
+#spy-guess-button:hover{
+    background-color: rgba(58, 54, 54, 0.767);
+    color: rgba(255, 248, 220, 0.733);
 
 }
 </style>

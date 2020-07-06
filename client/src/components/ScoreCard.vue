@@ -1,10 +1,10 @@
 <template>
 <div id="score-wrapper">
   <div id="redwrapper">
-      <h2 id="redcards">{{redScore}}</h2>
+      <div id="redcards"><h2>{{redScore}}</h2></div>
   </div>
   <div id="bluewrapper">
-      <h2 id="bluecards">{{blueScore}}</h2>
+      <div id="bluecards"><h2>{{blueScore}}</h2></div>
   </div>
 </div>
 </template>
@@ -30,14 +30,11 @@ export default {
 </script>
 
 <style scoped> 
-
-h2 {
-
-}
 #score-wrapper{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     justify-content: space-evenly;
+    align-items: center;
     margin-bottom: 5%;
 }
 
@@ -49,13 +46,11 @@ h2 {
 #redcards{
     box-shadow: -16px -1px 16px -4px rgba(0,0,0,0.75);
     color:white;
-    text-size: 3em;
     height: 56px;
     width: 56px;
     background-color: rgba(139, 0, 0, 0.722);
     border-radius: 15%;
     text-align: center;
-    /* grid-column: 1/2; */
 }
 #bluewrapper{
     display: flex;
@@ -70,10 +65,6 @@ h2 {
     border-radius: 15%;
     background-color: rgba(10, 136, 177, 0.838);
     text-align: center;
-    grid-column: 3/4;
-    /* margin-right: 10%; */
-    margin-bottom: 10%;
-    margin-left: -15%;
     color: white;
 }
 
