@@ -141,8 +141,7 @@ export default {
 
 <style>
 @import url(https://fonts.googleapis.com/css?family=Bungee:regular);
-*{
-  margin: 0;
+*{margin: 0;
 }
 #user-bar{
   grid-column: 3/5;
@@ -152,7 +151,7 @@ export default {
 }
 #app {
   background-image: url('../public/Codenamestable.png');
-  background-size: cover;
+  background-size: 100%;
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position-x: left;
