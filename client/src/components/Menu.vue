@@ -28,7 +28,8 @@ export default {
 name: 'menu',
 props: ['gameOn'],
 methods: {startGame(){
-    this.$parent.startGame()}
+    this.$parent.startGame()
+    this.$parent.fetchCards()}
     // startGame() {
     //   // this.shuffle(this.cards)
     //   this.fetchGameStatus()
