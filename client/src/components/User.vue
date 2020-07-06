@@ -1,8 +1,8 @@
 <template>
-    <div v-if="gameOn" id="spy-guess-buttons">
+    <div v-if="gameOn" id="spy-guess-button-wrapper">
     <!-- <div id="spy-guess-buttons"> -->
 
-        <button v-on:mousedown="displayColours" v-on:mouseup="hideColours">Codebreaker</button>
+        <button id="spy-guess-button" v-on:mousedown="displayColours" v-on:mouseup="hideColours">Codebreaker</button>
     </div>
 
 </template>
@@ -41,5 +41,9 @@ export default  {
 </script>
 
 <style>
+#spy-guess-button{
+    position: relative;
+    top: 150%;
 
+}
 </style>

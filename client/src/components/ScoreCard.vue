@@ -17,52 +17,65 @@ export default {
     props: ['scoreCard', 'blueScore', 'redScore'],
     components: {
         'score-bar': ScoreBar
+    },
+    methods: {
+        toggleGameState(){
+                this.$parent.toggleGameState()
+
+        }
     }
     
 
 }
 </script>
 
-<style>
+<style scoped> 
+
+h2 {
+
+}
 #score-wrapper{
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
     justify-content: space-evenly;
+    margin-bottom: 5%;
 }
+
 #redwrapper{
-    margin-left: 20%;
     display: flex;
-flex-direction: row;
+    flex-direction: row;
     grid-column: 1/2;
 }
 #redcards{
     box-shadow: -16px -1px 16px -4px rgba(0,0,0,0.75);
-
     color:white;
-    height: 50px;
-    width: 36px;
+    text-size: 3em;
+    height: 56px;
+    width: 56px;
     background-color: rgba(139, 0, 0, 0.722);
-    text-align: left;
+    border-radius: 15%;
+    text-align: center;
     /* grid-column: 1/2; */
-    margin-left: -10%;
-    margin-bottom: 10%;
 }
-#bluewrapper{margin-left: 50%;
-   display: flex;
-flex-direction: row;
+#bluewrapper{
+    display: flex;
+    flex-direction: row-reverse;
     grid-column: 3/4;
 
 }
 #bluecards{color: rgba(105, 105, 105, 0);
-    height: 50px;
-    width: 36px;
+    height: 56px;
+    width: 56px;
     box-shadow: -16px -1px 16px -4px rgba(0,0,0,0.75);
+    border-radius: 15%;
     background-color: rgba(10, 136, 177, 0.838);
-    text-align: right;
-    /* grid-column: 3/4; */
+    text-align: center;
+    grid-column: 3/4;
     /* margin-right: 10%; */
     margin-bottom: 10%;
     margin-left: -15%;
     color: white;
 }
+
+
 </style>

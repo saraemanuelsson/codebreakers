@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <button v-on:click="toggleGameState">{{ gameStateText }}</button>
+    <button id="toggle-game-button" v-on:click="toggleGameState">{{ gameStateText }}</button>
     <menu-button id="menu" :gameOn="gameOn"></menu-button>
     <score-bar id="score-bar" :redScore="redScore" :blueScore="blueScore" :gameOn="gameOn"></score-bar>
     <grid id="grid" :cards="cards" :gameOn="gameOn"></grid>
@@ -173,13 +173,14 @@ export default {
 </script>
 
 <style>
-
+@import url(https://fonts.googleapis.com/css?family=Bungee:regular);
 html {
   background: url('../public/Codenamestable.png') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  text-size: 16px;
 }
 
 #menu{
@@ -200,7 +201,7 @@ html {
   background-position-y: bottom;
   font-family: "Bungee";
   display: grid;
-  grid-template-columns: 26% 16% 16% 16% 26%;
+  grid-template-columns: 29% 14% 14% 14% 29%;
 }
 
 #grid {
@@ -213,7 +214,8 @@ html {
   border-radius: 2%;
   padding: 0.8vw;
 }
-button{
+#toggle-game-button{position: relative;
+  top: 97%;
   color: rgb(89, 175, 2);
   border-style: none;
   font-family: "Anton";

@@ -34,8 +34,8 @@ methods: {
 .card{
   /* color: rgb(51, 51, 50); */
   text-align: center;
-  width: 6vw;
-  height: 6vw;
+  width: 5vw;
+  height: 5vw;
   margin: 0.6vw;
   margin-left: 0.59vw;
   padding: 0.9vw;

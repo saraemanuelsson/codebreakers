@@ -1,6 +1,6 @@
 <template>
-  <div v-if="gameOn" id="score-bar">
-      <score-card :redScore="redScore" :blueScore="blueScore"> </score-card>
+  <div  id="score-bar">
+      <score-card v-if="gameOn" :redScore="redScore" :blueScore="blueScore"> </score-card>
   </div>
 </template>
 
