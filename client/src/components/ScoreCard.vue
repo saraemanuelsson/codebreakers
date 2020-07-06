@@ -1,29 +1,24 @@
 <template>
 <div id="score-wrapper">
-  <div id="redwrapper"><h2 id="redcards"></h2>
-  <h2 id="redcards"></h2>
-  <h2 id="redcards"></h2>
-  <h2 id="redcards"></h2>
-  <h2 id="redcards"></h2>
-  <h2 id="redcards"></h2>
-  <h2 id="redcards"></h2>
-  <h2 id="redcards"></h2></div>
-  <div id="bluewrapper"><h2 id="bluecards">blue cards</h2>
-  <h2 id="bluecards">blue cards</h2>
-  <h2 id="bluecards">blue cards</h2>
-  <h2 id="bluecards">blue cards</h2>
-  <h2 id="bluecards">blue cards</h2>
-  <h2 id="bluecards">blue cards</h2>
-  <h2 id="bluecards">blue cards</h2>
-  <h2 id="bluecards">blue cards</h2>
+  <div id="redwrapper">
+      <h2 id="redcards">{{redScore}}</h2>
   </div>
+  <div id="bluewrapper">
+      <h2 id="bluecards">{{blueScore}}</h2>
   </div>
+</div>
 </template>
 
 <script>
+import ScoreBar from "./ScoreBar.vue"
+
 export default {
-    name: 'scoreCard',
-    props: ['scoreCard']
+    name: 'scoreCard', 
+    props: ['scoreCard', 'blueScore', 'redScore'],
+    components: {
+        'score-bar': ScoreBar
+    }
+    
 
 }
 </script>
@@ -43,7 +38,7 @@ flex-direction: row;
 #redcards{
     box-shadow: -16px -1px 16px -4px rgba(0,0,0,0.75);
 
-    color:rgba(105, 105, 105, 0.728);
+    color:white;
     height: 50px;
     width: 36px;
     background-color: rgba(139, 0, 0, 0.722);
@@ -68,6 +63,6 @@ flex-direction: row;
     /* margin-right: 10%; */
     margin-bottom: 10%;
     margin-left: -15%;
-
+    color: white;
 }
 </style>
