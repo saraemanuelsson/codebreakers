@@ -1,59 +1,33 @@
 <template>
-  <!-- <div class="card">
-    <div :id="Red">
-      <div v-bind:id="card.colour">
-      <p>{{card.word}}</p>
-      </div>
-    </div>
-  </div> -->
+
 <div class="card" v-on:click="clickCard">
   <div v-bind:class="[!card.isHidden || card.isClicked ? card.colour : card]">
     <p>{{card.word}}</p>
   </div>
-    
-    <!-- <div v-if="card.isHidden === false">
-      <div :class="card.colour">
-        <p>{{card.word}}</p>
-      </div>
-    </div>
-    <div v-else>
-      <div class="card.colour">
-        {{card.word}}
-      </div>
-    </div> -->
 </div>
+
 </template>
 
 <script>
-import {eventBus} from '@/main';
+import {eventBus} from "@/main";
 
 export default {
-  name: 'card',
-  props: ['card'],
-  // mounted() {
-  //   eventBus.$on('display-colours', this.showCards())
-  //   eventBus.$on('hide-colours', this.showCards())
-  // },
-  methods: {
-    clickCard: function() {
-    eventBus.$emit('card-selected', this.card)
-  },
+name: 'card',
+props: ['card'],
 
-    showCards(){
-      this.card.isHidden = !this.card.isHidden
-    }
-  },
-    gameStateText() {
-      return this.gameOn ? 'End turn' : 'Start game'
-    }
+methods: {
+  clickCard: function() {
+  eventBus.$emit('card-selected', this.card)
+},
+
+  showCards(){
+    this.card.isHidden = !this.card.isHidden
   }
-    // computed: {
-    // showRed () {
-    //   return this.card.isHidden ? null : 'Red'
-    // },
-  // }
-// }
-
+},
+  gameStateText() {
+    return this.gameOn ? 'End turn' : 'Start game'
+  }
+}
 </script>
 
 <style>
@@ -109,8 +83,8 @@ p{
 .card > #true.Black {
   background-color: rgb(44, 43, 43);
   color: white;
-}
+}*/
 /* .card {
   background-color: rgb(160, 174, 201);
-} */
+}  */
 </style>

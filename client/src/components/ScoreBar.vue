@@ -1,13 +1,14 @@
 <template>
   <div id="score-bar">
-      <!-- <h2>{{redScore}}</h2> -->
-      <score-card></score-card>
-
-    </div>
+<!-- <h2>{{redScore}}</h2>
+        <h2>{{blueScore}}</h2> -->
+      <score-card :redScore="redScore" :blueScore="blueScore"> </score-card>
+  </div>
 </template>
 
 <script>
 import ScoreCard from './ScoreCard'
+
 export default {
 name: 'scoreBar',
 props: ['redScore', 'blueScore'],

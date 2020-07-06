@@ -5,8 +5,6 @@
     <score-bar id="score-bar" :redScore="redScore" :blueScore="blueScore"></score-bar>
     <grid id="grid" :cards="cards" :gameOn="gameOn"></grid>
     <user id="user-bar" :cards="cards"></user>
-    
-    <!-- <score-card :redScore="redScore" :blueScore="blueScore"></score-card> -->
   </div>
 </template>
 
@@ -32,13 +30,11 @@ export default {
       gameOn: false,
       cards: [],
       words: [],
-      // currentCards: [],
       redTurn: true,
       blueTurn: false,
       redScore: 9,
       blueScore: 8,
       round: 0
-      // selectedCard: null
     }
   },
   mounted() {
@@ -63,13 +59,25 @@ export default {
 
     clickCard(card) {
       const index = this.cards.indexOf(card);
+
       this.cards[index].isClicked = true;
+
+      if (this.cards[index].colour === 'Blue') {
+        this.blueScore -= 1
+        return this.blueScore
+      }
+
+      if (this.cards[index].colour === 'Red') {
+        this.redScore -= 1
+        return this.redScore
+      }
+      
     },
     
     nextTurn(){
-      
       this.redTurn = !this.redTurn
       this.blueTurn = !this.blueTurn
+      this.saveNewMove()
  
     },
     
@@ -88,14 +96,10 @@ export default {
       Promise.all(promises)
       
       .then((result) => {        
-        this.words = result[0]
+        this.words = this.shuffle(result[0])
         this.cards = this.createCard(result[1])
       })
-      .then(() => {
-        this.shuffle(this.words)
-      })
       .then(() => this.createCard())
-      .then(() => this.shuffle(this.cards))
 
     },
     createCard(cardsFromDatabase){
@@ -114,36 +118,47 @@ export default {
     },
 
     startGame() {
-      // this.shuffle(this.cards)
-      this.fetchGameStatus()
+      this.shuffle(this.cards)
+      this.saveNewGameStatus()
     },
 
-    fetchGameStatus() { 
+    saveNewGameStatus() { 
       CodeBreakerService.getGameStatus()
       .then(gameStatuses => {
         const gameStatus = gameStatuses[0]
-        // this.setCurrentCards()
         this.gameOn = true; 
         this.redTurn = true;
-        this.round = this.round + 1;
-      
-        console.log("game status", gameStatus);
-    
+        this.round = this.round + 1;    
         const updatedGameStatus = {
           ...gameStatus,
           gameOn: this.gameOn,
           cards: this.cards,
-          round: this.round
+          round: this.round,
+          redScore: this.redScore,
+          blueScore: this.blueScore,
+          redTurn: this.redTurn,
+          blueTurn: this.blueTurn
+      }
+      
+      CodeBreakerService.updateGameStatus(updatedGameStatus);
+      })
+    },
+
+    saveNewMove() { 
+      CodeBreakerService.getGameStatus()
+      .then(gameStatuses => {
+        const gameStatus = gameStatuses[0]   
+        const updatedGameStatus = {
+          ...gameStatus,
+          cards: this.cards,
+          redTurn: this.redTurn,
+          blueTurn: this.blueTurn
       }
       
       CodeBreakerService.updateGameStatus(updatedGameStatus);
       })
     }
 
-
-    // setCurrentCards(){
-    //   this.shuffle(this.cards)
-    // }
   }
 }
 </script>
