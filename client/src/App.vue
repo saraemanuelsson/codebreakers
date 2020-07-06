@@ -180,7 +180,7 @@ html {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  text-size: 16px;
+  font-size: 16px;
 }
 
 #menu{
@@ -215,14 +215,24 @@ html {
   border-radius: 2%;
   padding: 0.8vw;
 }
-#toggle-game-button{position: relative;
-  top: 97%;
-  color: rgb(89, 175, 2);
+#toggle-game-button{
+  position: relative;
+  top: 100%;
   border-style: none;
-  font-family: "Anton";
-  height:50px;
+  height: 4vw;
+  font-size: 1.5em;
   grid-column: 3/4;
-  margin: 10%;
+  font-family: "Bungee";
+  font-size: 1.5vw;
+  border-style: none;
+  border-radius: 12px;
+  outline: none;
+  background-color: rgb(58, 54, 54);
+  color: rgba(255, 248, 220, 0.733);
 }
 
+#toggle-game-button:hover{
+  background-color: black;
+  color: white;
+}
 </style>
