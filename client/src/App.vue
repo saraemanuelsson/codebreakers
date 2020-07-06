@@ -4,6 +4,7 @@
     <menu-button id="menu" :gameOn="gameOn"></menu-button>
     <score-bar id="score-bar" :redScore="redScore" :blueScore="blueScore"></score-bar>
     <grid id="grid" :cards="cards" :gameOn="gameOn"></grid>
+    <result-display :team="team" :wonGame="wonGame"></result-display>
     <user id="user-bar" :cards="cards"></user>
   </div>
 </template>
@@ -11,11 +12,13 @@
 <script>
 import {eventBus} from "@/main";
 import Grid from "./components/Grid.vue";
-import ScoreBar from "./components/ScoreBar"
+import ScoreBar from "./components/ScoreBar";
 import CodeBreakerService from "./services/CodebreakerService";
-import User from "./components/User"
-import ScoreCard from "./components/ScoreCard"
-import Menu from "./components/Menu"
+import User from "./components/User";
+import ScoreCard from "./components/ScoreCard";
+import Menu from "./components/Menu";
+import Result from "./components/Result";
+
 export default {
   name: 'App',
   components: {
@@ -23,7 +26,8 @@ export default {
     "score-bar": ScoreBar,
     "user": User,
     "score-card": ScoreCard,
-    "menu-button": Menu
+    "menu-button": Menu,
+    "result-display": Result
   },
   data() {
     return {
@@ -33,7 +37,9 @@ export default {
       turn: "Red",
       redScore: 9,
       blueScore: 8,
-      round: 0
+      round: 0,
+      team: "",
+      wonGame: false
     }
   },
   mounted() {
@@ -59,12 +65,25 @@ export default {
 
     clickCard(card) {
       const index = this.cards.indexOf(card);
-
       this.cards[index].isClicked = true;
-      this.saveNewMove();
-      this.checkIfWrongColour(card);
+      
       this.addPointsToRightTeam(card);
       
+      if (card.colour === "Black") {
+        this.team = this.turn;
+        this.endGame();
+      } else if (this.redScore === 0 || this.blueScore === 0) {
+        this.team = card.colour;
+        this.wonGame = true;
+        this.endGame();
+      };
+      
+      this.checkIfWrongColour(card);
+      this.saveNewMove();
+    },
+
+    endGame(){
+
     },
 
     checkIfWrongColour(card){
