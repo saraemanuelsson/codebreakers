@@ -2,9 +2,9 @@
   <div id="app">
     <button v-on:click="toggleGameState">{{ gameStateText }}</button>
     <menu-button id="menu" :gameOn="gameOn"></menu-button>
-    <score-bar id="score-bar" :redScore="redScore" :blueScore="blueScore"></score-bar>
+    <score-bar id="score-bar" :redScore="redScore" :blueScore="blueScore" :gameOn="gameOn"></score-bar>
     <grid id="grid" :cards="cards" :gameOn="gameOn"></grid>
-    <user id="user-bar" :cards="cards"></user>
+    <user id="user-bar" :cards="cards" :gameOn="gameOn"></user>
   </div>
 </template>
 
