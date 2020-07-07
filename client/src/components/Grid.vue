@@ -16,7 +16,9 @@ export default {
 </script>
 
 <style>
-#looped-card {  
+#looped-card { 
+    cursor: pointer;
     background-color: #C7C2A5;
+    font-size: 0.85vw;
 }
 </style>
