@@ -2,10 +2,10 @@
   <div id="app">
     <button v-on:click="toggleGameState">{{ gameStateText }}</button>
     <menu-button id="menu" :gameOn="gameOn"></menu-button>
-    <score-bar id="score-bar" :redScore="redScore" :blueScore="blueScore"></score-bar>
+    <score-bar id="score-bar" :redScore="redScore" :blueScore="blueScore" :gameOn="gameOn"></score-bar>
     <grid id="grid" :cards="cards" :gameOn="gameOn"></grid>
     <result-display :team="team" :wonGame="wonGame"></result-display>
-    <user id="user-bar" :cards="cards"></user>
+    <user id="user-bar" :cards="cards" :gameOn="gameOn"></user>
   </div>
 </template>
 
@@ -219,16 +219,12 @@ html {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position-x: left;
- 
-
-#grid .Blue {
-  box-shadow: -5px 7px 62px 16px rgb(10, 136, 177);
-}
- background-position-y: bottom;
+  background-position-y: bottom;
   font-family: "Bungee";
   display: grid;
   grid-template-columns: 26% 16% 16% 16% 26%;
 }
+
 #grid {
   box-shadow: -5px 7px 62px 16px rgb(177, 24, 24);
   border: 1rem solid rgba(75, 72, 72, 0.719);

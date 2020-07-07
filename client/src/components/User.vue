@@ -1,5 +1,7 @@
 <template>
     <div v-if="gameOn" id="spy-guess-buttons">
+    <!-- <div id="spy-guess-buttons"> -->
+
         <button v-on:mousedown="displayColours" v-on:mouseup="hideColours">Codebreaker</button>
     </div>
 
