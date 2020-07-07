@@ -1,6 +1,7 @@
 <template>
 
 <div class="card" v-bind:class="{cardSelected: card.isClicked }" v-on:click="clickCard">
+  
   <div v-bind:class="[!card.isHidden || card.isClicked ? card.colour : card]">
     <p>{{card.word}}</p>
   </div>
@@ -50,11 +51,6 @@ p{
 }
 .cardSelected {
   border: 2px solid rgb(253, 181, 64);
-  /* color:crimson;
-  transition: 0.5s;
-  border-radius:50%;
-  background-color: rgb(204, 23, 23);
-  color: white; */
 }
 
 .card .Red{
