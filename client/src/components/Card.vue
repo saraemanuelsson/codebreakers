@@ -1,6 +1,7 @@
 <template>
 
-<div class="card" v-on:click="clickCard">
+<div class="card" v-bind:class="{cardSelected: card.isClicked }" v-on:click="clickCard">
+  
   <div v-bind:class="[!card.isHidden || card.isClicked ? card.colour : card]">
     <p>{{card.word}}</p>
   </div>
@@ -12,21 +13,23 @@
 import {eventBus} from "@/main";
 
 export default {
-name: 'card',
-props: ['card'],
+  name: 'card',
+  props: ['card'],
 
-methods: {
-  clickCard: function() {
-  eventBus.$emit('card-selected', this.card)
-},
+  methods: {
+    clickCard: function() {
+    eventBus.$emit('card-selected', this.card)
+    },
 
-  showCards(){
-    this.card.isHidden = !this.card.isHidden
+    showCards(){
+      this.card.isHidden = !this.card.isHidden
+    },
+  
+    gameStateText() {
+      return this.gameOn ? 'End turn' : 'Start game'
+    }
   }
-},
-  gameStateText() {
-    return this.gameOn ? 'End turn' : 'Start game'
-  }
+  
 }
 </script>
 
@@ -46,6 +49,10 @@ p{
   font-size: 0.8vw;
   padding-top: 40%;
 }
+.cardSelected {
+  border: 2px solid rgb(253, 181, 64);
+}
+
 .card .Red{
   color:crimson;
   transition: 0.5s;

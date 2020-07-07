@@ -4,6 +4,7 @@
     <menu-button id="menu" :gameOn="gameOn"></menu-button>
     <score-bar id="score-bar" :redScore="redScore" :blueScore="blueScore" :gameOn="gameOn"></score-bar>
     <grid id="grid" :cards="cards" :gameOn="gameOn"></grid>
+    <result-display :team="team" :wonGame="wonGame"></result-display>
     <user id="user-bar" :cards="cards" :gameOn="gameOn"></user>
   </div>
 </template>
@@ -11,11 +12,13 @@
 <script>
 import {eventBus} from "@/main";
 import Grid from "./components/Grid.vue";
-import ScoreBar from "./components/ScoreBar"
+import ScoreBar from "./components/ScoreBar";
 import CodeBreakerService from "./services/CodebreakerService";
-import User from "./components/User"
-import ScoreCard from "./components/ScoreCard"
-import Menu from "./components/Menu"
+import User from "./components/User";
+import ScoreCard from "./components/ScoreCard";
+import Menu from "./components/Menu";
+import Result from "./components/Result";
+
 export default {
   name: 'App',
   components: {
@@ -23,7 +26,8 @@ export default {
     "score-bar": ScoreBar,
     "user": User,
     "score-card": ScoreCard,
-    "menu-button": Menu
+    "menu-button": Menu,
+    "result-display": Result
   },
   data() {
     return {
@@ -33,7 +37,9 @@ export default {
       turn: "Red",
       redScore: 9,
       blueScore: 8,
-      round: 0
+      round: 0,
+      team: "",
+      wonGame: false
     }
   },
   mounted() {
@@ -59,12 +65,27 @@ export default {
 
     clickCard(card) {
       const index = this.cards.indexOf(card);
-
       this.cards[index].isClicked = true;
-      this.saveNewMove();
-      this.checkIfWrongColour(card);
+      
       this.addPointsToRightTeam(card);
       
+      if (card.colour === "Black") {
+        this.team = this.turn;
+      } else if (this.redScore === 0 || this.blueScore === 0) {
+        this.team = card.colour;
+        this.wonGame = true;
+      };
+      
+      this.checkIfWrongColour(card);
+      this.saveNewMove();
+    },
+
+    endGame(){
+      this.turn = "Red";
+      this.redScore = 9;
+      this.blueScore = 8;
+      this.team = "";
+      this.wonGame = false;
     },
 
     checkIfWrongColour(card){
@@ -110,11 +131,12 @@ export default {
       
       .then((result) => {        
         this.words = this.shuffle(result[0])
-        this.cards = this.createCard(result[1])
+        this.cards = this.shuffle(this.createCard(result[1]))
       })
 
     },
     createCard(cardsFromDatabase){
+      this.shuffle(this.words)
       return cardsFromDatabase.map((card, i) => {
         return {
           ...card,
@@ -130,7 +152,7 @@ export default {
     },
 
     startGame() {
-      this.shuffle(this.cards)
+      this.cards = this.shuffle(this.createCard(this.cards))
       this.saveNewGameStatus()
     },
 

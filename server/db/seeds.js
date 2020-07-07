@@ -4,142 +4,13 @@ db.dropDatabase();
 db.gameStatus.insertMany([
   {
     gameOn: false,
-    redTurn: true,
-    blueTurn: false,
+    turn: "Red",
     currentCards: [],
     redScore: 9,
     blueScore: 8,
     round: 0
   }
 ])
-
-// db.currentPlayCards.insertMany([
-//   {
-//     colour: '',
-//     word: '',
-//     isClicked: false
-//   },
-//   {
-//     colour: '',
-//     word: '',
-//     isClicked: false
-//   },
-//   {
-//     colour: '',
-//     word: '',
-//     isClicked: false
-//   },
-//   {
-//     colour: '',
-//     word: '',
-//     isClicked: false
-//   },
-//   {
-//     colour: '',
-//     word: '',
-//     isClicked: false
-//   },
-//   {
-//     colour: '',
-//     word: '',
-//     isClicked: false
-//   },
-//   {
-//     colour: '',
-//     word: '',
-//     isClicked: false
-//   },
-//   {
-//     colour: '',
-//     word: '',
-//     isClicked: false
-//   },
-//   {
-//     colour: '',
-//     word: '',
-//     isClicked: false
-//   },
-//   {
-//     colour: '',
-//     word: '',
-//     isClicked: false
-//   },
-//   {
-//     colour: '',
-//     word: '',
-//     isClicked: false
-//   },
-//   {
-//     colour: '',
-//     word: '',
-//     isClicked: false
-//   },
-//   {
-//     colour: '',
-//     word: '',
-//     isClicked: false
-//   },
-//   {
-//     colour: '',
-//     word: '',
-//     isClicked: false
-//   },
-//   {
-//     colour: '',
-//     word: '',
-//     isClicked: false
-//   },
-//   {
-//     colour: '',
-//     word: '',
-//     isClicked: false
-//   },
-//   {
-//     colour: '',
-//     word: '',
-//     isClicked: false
-//   },
-//   {
-//     colour: '',
-//     word: '',
-//     isClicked: false
-//   },
-//   {
-//     colour: '',
-//     word: '',
-//     isClicked: false
-//   },
-//   {
-//     colour: '',
-//     word: '',
-//     isClicked: false
-//   },
-//   {
-//     colour: '',
-//     word: '',
-//     isClicked: false
-//   },
-//   {
-//     colour: '',
-//     word: '',
-//     isClicked: false
-//   },
-//   {
-//     colour: '',
-//     word: '',
-//     isClicked: false
-//   },
-//   {
-//     colour: '',
-//     word: '',
-//     isClicked: false
-//   },
-//   {
-//     colour: '',
-//     word: '',
-//     isClicked: false
-//   },
-// ])
 
 db.prePlayCards.insertMany([
   {colour: 'Red'},
@@ -168,7 +39,6 @@ db.prePlayCards.insertMany([
   {colour: 'Neutral'},
   {colour: 'Black'}
 ])
-
 
 db.words.insertMany([
     {word:'Acne'},
