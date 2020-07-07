@@ -9,7 +9,7 @@
         <ul id="menu">
             <li @click="startGame">Start New Game</li>
             <li @click="endGame">End Current Game</li>
-            <li @click="resumeGame">Resume Game</li>
+            <li v-if="!gameOn" @click="resumeGame">Resume Game</li>
             <a href="https://czechgames.com/files/rules/codenames-rules-en.pdf" target="_blank"><li>Show Rules</li></a>
             <li class='round'>ROUND  {{round}}</li>
             <li class='red-wins'>RED  {{redWins}}</li>   
@@ -42,10 +42,6 @@ methods: {
 </script>
 
 <style scoped>
-/* #nav{
-    position: fixed;
-    right: 1;
-} */
 #menuToggle
 {
     display: block;
@@ -120,13 +116,15 @@ methods: {
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
   transform-origin: 0% 0%;
-  transform: translate(90vw, 0);
+  transform: translate(90vw, -2vw);
   transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
 }
 #menu li{
+  word-break: keep-all;
   text-align: right;
-  padding: 0.2vw 1vw;
-  font-size: 1.2vw;
+  padding: 0.2vw 0.8vw;
+  margin-left: -13.5vw;
+  font-size: 1.5vw;
 }
 #menu li:hover{
     color: rgba(255, 136, 0, 0.753);
@@ -141,10 +139,9 @@ nav{
     right: 2
 }
 li {
+  font-family: "Bungee";
     cursor: pointer;
     word-break: break-all;
-    /* padding: 5%; */
-    /* padding-left: 10%; */
     text-align: right;
     background-color: rgba(169, 169, 169, 0.438);
     margin-left: -70%;
@@ -154,10 +151,6 @@ li {
 a:link, a:visited {
     color: rgb(0, 0, 0);
 }
-/* li {
-    color: rgba(255, 255, 255, 0.827);
-    list-style: none;
-/* } */
 a {
     text-decoration: none;
 }

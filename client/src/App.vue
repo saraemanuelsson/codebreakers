@@ -223,12 +223,16 @@ export default {
 <style>
 @import url(https://fonts.googleapis.com/css?family=Rubik:300,300italic,regular,italic,500,500italic,700,700italic,900,900italic);
 @import url(https://fonts.googleapis.com/css?family=Bungee:regular);
+
 html {
   background: url('../public/Codenamestable.png') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  background-attachment: fixed ;
+  background-position-y: bottom;
+  background-position-x: left;
   font-size: 16px;
 }
 
@@ -247,12 +251,6 @@ html {
 }
 
 #app {
-  /* background-image: url('../public/Codenamestable.png'); */
-  background-size: 100%;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-position-x: left;
-  background-position-y: bottom;
   font-family: "Rubik";
   font-weight: 700;
   display: grid;
