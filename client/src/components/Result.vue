@@ -2,7 +2,7 @@
     <div v-if="team.length != 0" class="modal" v-bind:class="team">
         <h1 v-if="wonGame">Congratulations! Good job {{team}} team!</h1>
         <h1 v-else-if="!wonGame">Oh no! Better luck next time {{team}} team!</h1>
-        <button v-on:click="gameCompleted">New Game</button>
+        <button id="new-game" v-on:click="gameCompleted">New Game</button>
     </div>
 </template>
 
@@ -31,9 +31,14 @@ export default {
   width: 100%; /* Full width */
   height: 100%; /* Full height */
   overflow: auto; /* Enable scroll if needed */
-  color: white;
+  color: rgb(0, 0, 0);
   text-align: center;
   vertical-align: middle;
+}
+h1{
+    padding: 1vw;
+    background-color: rgba(240, 248, 255, 0.712);
+    margin-top: 23vw;
 }
 
 .Red {
@@ -41,5 +46,26 @@ export default {
 }
 .Blue {
     background-color: rgba(0, 0, 255, 0.345);
+}
+#new-game{
+    font-family: "Bungee";
+    /* margin-left: -92.5%; */
+    width: 20vw;
+    height:4.2vw;
+    font-size: 1.5vw;
+    border-style: none;
+    border-radius: 12px;
+    background-color: rgb(39, 38, 41);
+    outline: none;
+    /* margin-top: -2rem; */
+    padding-top: 0.2rem;
+    cursor: pointer;
+    color: rgb(159, 132, 204);
+}
+#new-game:hover{
+    transform: scale(1.1);
+    background-color: black;
+    color: rgb(136, 100, 196);
+
 }
 </style>
