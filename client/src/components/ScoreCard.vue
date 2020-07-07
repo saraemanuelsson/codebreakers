@@ -68,7 +68,7 @@ export default {
     width: 4vw;
     box-shadow: -16px -1px 16px -4px rgba(0,0,0,0.75);
     border-radius: 15%;
-    background-color: rgba(10, 136, 177, 0.838);
+    background-color: rgba(10, 136, 177);
     text-align: center;
     color: white;
     margin: 0 !important;

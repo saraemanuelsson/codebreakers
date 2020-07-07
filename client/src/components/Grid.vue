@@ -16,7 +16,7 @@ export default {
 </script>
 
 <style>
-#looped-card {
+#looped-card {  
     background-color: #C7C2A5;
 }
 </style>
