@@ -35,6 +35,7 @@ export default {
 
 <style>
 .card {
+  text-transform: uppercase;
   border: 3px solid rgb(179, 176, 163);
   background: linear-gradient(135deg, rgba(0,0,0,0.22), rgba(255, 255, 255, 0.336));
   text-align: center;
