@@ -60,7 +60,7 @@ export default {
 .redcards{
     color: white;
     border: 2px solid rgb(177, 8, 8);
-    background: linear-gradient(135deg, rgba(194, 73, 73, 0.836), rgb(177, 8, 8));
+    background: linear-gradient(135deg, rgb(194, 73, 73), rgb(177, 8, 8));
     height: 4vw;
     width: 4vw;
     border-radius: 15%;
@@ -83,7 +83,7 @@ export default {
     border: 2px solid rgb(22, 94, 107);
     height: 4vw;
     width: 4vw;
-    background: linear-gradient(135deg, rgba(55, 154, 211, 0.836), rgb(20, 117, 134));
+    background: linear-gradient(135deg, rgb(55, 154, 211), rgb(20, 117, 134));
     border-radius: 15%;
     text-align: center;
     color: white;
