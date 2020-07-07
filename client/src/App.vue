@@ -66,10 +66,12 @@ export default {
   methods: {
 
     clickCard(card) {
+      this.addPointsToRightTeam(card);
+      
       const index = this.cards.indexOf(card);
       this.cards[index].isClicked = true;
       
-      this.addPointsToRightTeam(card);
+      
       
       if (card.colour === "Black") {
         this.team = this.turn;
@@ -98,10 +100,10 @@ export default {
     },
 
     addPointsToRightTeam(card){
-        if (card.colour === 'Blue') {
+        if (card.colour === 'Blue' && !card.isClicked) {
         this.blueScore -= 1
         return this.blueScore
-        } else if (card.colour === 'Red') {
+        } else if (card.colour === 'Red' && !card.isClicked) {
         this.redScore -= 1
         return this.redScore
         } 
@@ -166,6 +168,10 @@ export default {
     startGame() {
       this.cards = this.shuffle(this.createCard(this.cards))
       this.saveNewGameStatus()
+      this.gameOn = true; 
+      this.turn = 'Red';
+      this.round = this.round + 1;    
+      
     },
 
     fetchGameStatus(){
@@ -176,17 +182,14 @@ export default {
     },
 
     saveNewGameStatus() { 
-        this.gameOn = true; 
-        this.redTurn = true;
-        this.round = this.round + 1;    
-        const updatedGameStatus = {
-          ...this.gameStatus,
-          gameOn: this.gameOn,
-          cards: this.cards,
-          round: this.round,
-          redScore: this.redScore,
-          blueScore: this.blueScore,
-          turn: this.turn
+      const updatedGameStatus = {
+        ...this.gameStatus,
+        gameOn: this.gameOn,
+        cards: this.cards,
+        round: this.round,
+        redScore: this.redScore,
+        blueScore: this.blueScore,
+        turn: this.turn
       }
       CodeBreakerService.updateGameStatus(updatedGameStatus);
       this.gameStatus = updatedGameStatus
