@@ -17,6 +17,6 @@ export default {
 
 <style>
 #looped-card {
-    background-color: rgb(150, 123, 88);
+    background-color: #C7C2A5;
 }
 </style>

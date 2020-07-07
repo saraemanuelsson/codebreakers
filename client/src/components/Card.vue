@@ -43,16 +43,16 @@ export default {
   margin-left: 0.59vw;
   padding: 0.9vw;
   border-radius: 15%;
-
+  background: linear-gradient(135deg, rgba(0,0,0,0.22), rgba(255, 255, 255, 0.336));
 }
+
 p{
-  font-size: 0.8vw;
+  /* font-size: 0.8vw; */
   padding-top: 40%;
 }
 .cardSelected {
   border: 2px solid rgb(253, 181, 64);
 }
-
 .card .Red{
   color:crimson;
   transition: 0.5s;

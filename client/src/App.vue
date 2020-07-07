@@ -207,6 +207,7 @@ export default {
 </script>
 
 <style>
+@import url(https://fonts.googleapis.com/css?family=Rubik:300,300italic,regular,italic,500,500italic,700,700italic,900,900italic);
 @import url(https://fonts.googleapis.com/css?family=Bungee:regular);
 html {
   background: url('../public/Codenamestable.png') no-repeat center center fixed;
@@ -220,13 +221,16 @@ html {
 #menu{
   grid-column: 5/6;
 }
+
 #user-bar{
   padding: 15%;
   grid-column: 3/5;
 }
+
 #score-bar{
   grid-column: 2/5;
 }
+
 #app {
   /* background-image: url('../public/Codenamestable.png'); */
   background-size: 100%;
@@ -234,25 +238,28 @@ html {
   background-attachment: fixed;
   background-position-x: left;
   background-position-y: bottom;
-  font-family: "Bungee";
+  font-family: "Rubik";
+  font-weight: 700;
   display: grid;
+  font-size: 1.05vw;
   grid-template-columns: 29% 14% 14% 14% 29%;
 }
 
 .grid {
+  transition: 0.7s;
   box-shadow: -5px 7px 62px 16px rgb(211, 29, 29);
-  border: 1rem solid rgba(75, 72, 72, 0.719);
+  border: 0.8rem solid rgba(75, 72, 72, 0.719);
   background-color: rgba(0, 0, 0, 0.678);
   grid-column: 2/5;
   display: grid;
   grid-template-columns: 20% 20% 20% 20% 20%;
-  border-radius: 2%;
+  border-radius: 5%;
   padding: 0.8vw;
 }
 
 .blueTurn {
+  transition: 0.7s;
   box-shadow: -5px 7px 62px 16px rgb(32, 76, 221);
-  
 }
 
 #toggle-game-button{
