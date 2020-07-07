@@ -184,7 +184,9 @@ export default {
         const updatedGameStatus = {
           ...gameStatus,
           cards: this.cards,
-          turn: this.turn
+          turn: this.turn,
+          redScore: this.redScore,
+          blueScore: this.blueScore
       }
       
       CodeBreakerService.updateGameStatus(updatedGameStatus);
