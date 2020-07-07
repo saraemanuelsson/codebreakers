@@ -51,9 +51,26 @@ export default {
     socketIo.on("connect", function(){
       console.log("connected");
     })
-    socketIo.on("respond", function(data){
-      console.log(data);
-      socketIo.emit("respond-back", "hey back")
+    socketIo.on("disconnect", function(){
+      console.log("disconnected");
+    })
+
+    socketIo.on("test", function(data){
+      socketIo.emit("game-status", this.gameStatus)
+      
+    })
+
+    socketIo.on("updated-game", function(data){
+      console.log("on-updated-game");
+      eventBus.$emit("change", data);
+    })
+
+    eventBus.$on("change", (data) => {
+      this.turn = data.turn
+      this.redScore = data.redScore
+      this.blueScore = data.blueScore
+      this.cards = data.cards
+      this.gameOn = data.gameOn
     })
 
     eventBus.$on("display-to-app", (cards) => {
@@ -89,6 +106,17 @@ export default {
       
       this.checkIfWrongColour(card);
       this.saveNewMove();
+      this.updateForAllPlayers();
+    },
+
+    updateForAllPlayers(){
+        socketIo.emit("game-status", {
+        gameOn: this.gameOn,
+        cards: this.cards,
+        redScore: this.redScore,
+        blueScore: this.blueScore,
+        turn: this.turn        
+      })
     },
 
     endGame(){
@@ -154,6 +182,7 @@ export default {
       this.turn = this.gameStatus.turn;
       this.redScore = this.gameStatus.redScore;
       this.blueScore = this.gameStatus.blueScore;
+      this.updateForAllPlayers();
     },
 
     createCard(cardsFromDatabase){
@@ -173,9 +202,9 @@ export default {
     },
 
     startGame() {
-      this.cards = this.shuffle(this.createCard(this.cards))
-      this.saveNewGameStatus()
-      this.$socket.emit('Hello', "hey")
+      this.cards = this.shuffle(this.createCard(this.cards));
+      this.saveNewGameStatus();
+      this.updateForAllPlayers();
     },
 
     fetchGameStatus(){

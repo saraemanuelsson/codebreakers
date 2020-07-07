@@ -7,12 +7,18 @@ const io = require('socket.io')(http);
 
 io.on('connect', socket => {
   console.log("connect");
-  
-  socket.emit("respond", "hey")
-  socket.on("respond-back", function(data){
-    console.log(data);
-    
-  })  
+  socket.on("disconnect", () => {
+    console.log("disconnect");
+  })
+  socket.join("codebreakers", () => {
+    console.log(socket.rooms);
+  })
+
+  socket.emit("test", "hey");
+  socket.on("game-status", function(data){    
+    socket.broadcast.emit("updated-game", data)
+  })
+
 });
 
 const MongoClient = require('mongodb').MongoClient;
