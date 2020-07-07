@@ -24,10 +24,10 @@ export default {
 
 <style>
 img{
-    width: 20vw;
+    width: 18vw;
     position: fixed;
     margin-top: 2vw;
-    margin-left: -10vw;
+    margin-left: -9vw;
     z-index: -1;
 }
 .modal {
@@ -56,8 +56,8 @@ h1{
     background-color: rgba(0, 0, 255, 0.345);
 }
 #new-game{
+    margin-top: 4vw;
     font-family: "Bungee";
-    /* margin-left: -92.5%; */
     width: 20vw;
     height:4.2vw;
     font-size: 1.5vw;
@@ -65,7 +65,6 @@ h1{
     border-radius: 12px;
     background-color: rgb(39, 38, 41);
     outline: none;
-    /* margin-top: -2rem; */
     padding-top: 0.2rem;
     cursor: pointer;
     color: rgb(159, 132, 204);
