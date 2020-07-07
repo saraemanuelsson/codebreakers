@@ -66,12 +66,11 @@ export default {
   methods: {
 
     clickCard(card) {
+      this.checkIfWrongColour(card);
       this.addPointsToRightTeam(card);
       
       const index = this.cards.indexOf(card);
       this.cards[index].isClicked = true;
-      
-      
       
       if (card.colour === "Black") {
         this.team = this.turn;
@@ -80,7 +79,6 @@ export default {
         this.wonGame = true;
       };
       
-      this.checkIfWrongColour(card);
       this.saveNewMove();
     },
 
@@ -94,10 +92,11 @@ export default {
     },
 
     checkIfWrongColour(card){
-        if (card.colour !== this.turn) {
+        if (card.colour !== this.turn && !card.isClicked) {
         this.nextTurn()
       };
     },
+
 
     addPointsToRightTeam(card){
         if (card.colour === 'Blue' && !card.isClicked) {
@@ -106,7 +105,7 @@ export default {
         } else if (card.colour === 'Red' && !card.isClicked) {
         this.redScore -= 1
         return this.redScore
-        } 
+        }
     },
     
     nextTurn(){
@@ -117,7 +116,6 @@ export default {
         this.turn = "Red"
       }
       this.saveNewMove()
- 
     },
     
     shuffle(array) {
