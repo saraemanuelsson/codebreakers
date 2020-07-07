@@ -3,7 +3,7 @@
     <button id="toggle-game-button" v-on:click="toggleGameState">{{ gameStateText }}</button>
     <menu-button id="menu" :gameOn="gameOn"></menu-button>
     <score-bar id="score-bar" :redScore="redScore" :blueScore="blueScore" :gameOn="gameOn"></score-bar>
-    <grid id="grid" :cards="cards" :gameOn="gameOn"></grid>
+    <grid class="grid" v-bind:class="{blueTurn:(turn === 'Blue')}" :cards="cards" :gameOn="gameOn" ></grid>
     <result-display :team="team" :wonGame="wonGame"></result-display>
     <user id="user-bar" :cards="cards" :gameOn="gameOn"></user>
   </div>
@@ -235,8 +235,8 @@ html {
   grid-template-columns: 29% 14% 14% 14% 29%;
 }
 
-#grid {
-  box-shadow: -5px 7px 62px 16px rgb(177, 24, 24);
+.grid {
+  box-shadow: -5px 7px 62px 16px rgb(211, 29, 29);
   border: 1rem solid rgba(75, 72, 72, 0.719);
   background-color: rgba(0, 0, 0, 0.678);
   grid-column: 2/5;
@@ -245,6 +245,12 @@ html {
   border-radius: 2%;
   padding: 0.8vw;
 }
+
+.blueTurn {
+  box-shadow: -5px 7px 62px 16px rgb(32, 76, 221);
+  
+}
+
 #toggle-game-button{
   position: relative;
   top: 100%;
