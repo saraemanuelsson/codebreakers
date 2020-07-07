@@ -78,7 +78,7 @@ export default {
         this.team = card.colour;
         this.wonGame = true;
       };
-      
+      // card.word = ""
       this.saveNewMove();
     },
 
