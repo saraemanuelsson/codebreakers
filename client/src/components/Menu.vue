@@ -11,10 +11,12 @@
             <li @click="endGame">End Current Game</li>
             <li @click="resumeGame">Resume Game</li>
             <a href="https://czechgames.com/files/rules/codenames-rules-en.pdf" target="_blank"><li>Show Rules</li></a>
+            <li></li>
+            <li>RED {{redWins}}</li>   
+            <li>BLUE {{blueWins}}</li>
         </ul>
      </div>
   </nav>
-
         
 </template>
 
@@ -24,7 +26,7 @@ import App from '../App'
 
 export default {
 name: 'menu-button',
-props: ['gameOn'],
+props: ['gameOn', 'redWins', 'blueWins'],
 methods: {
   startGame(){
     this.$parent.startGame()

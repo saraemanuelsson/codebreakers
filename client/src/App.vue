@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <button id="toggle-game-button" v-on:click="toggleGameState">{{ gameStateText }}</button>
-    <menu-button id="menu" :gameOn="gameOn"></menu-button>
+    <menu-button id="menu" :gameOn="gameOn" :blueWins="blueWins" :redWins="redWins"></menu-button>
     <score-bar id="score-bar" :redScore="redScore" :blueScore="blueScore" :gameOn="gameOn"></score-bar>
     <grid class="grid" v-bind:class="{blueTurn:(turn === 'Blue')}" :cards="cards" :gameOn="gameOn" ></grid>
     <result-display :team="team" :wonGame="wonGame"></result-display>
@@ -40,7 +40,10 @@ export default {
       round: 0,
       team: "",
       wonGame: false,
-      gameStatus: {}
+      gameStatus: {},
+
+      redWins: 0,
+      blueWins: 0
     }
   },
   mounted() {
@@ -71,15 +74,16 @@ export default {
       const index = this.cards.indexOf(card);
       this.cards[index].isClicked = true;
       
-      
-      
       if (card.colour === "Black") {
         this.team = this.turn;
+        this.wonGame = true;
       } else if (this.redScore === 0 || this.blueScore === 0) {
         this.team = card.colour;
         this.wonGame = true;
       };
-      
+     
+     
+      this.addVictoryToRightTeam()
       this.checkIfWrongColour(card);
       this.saveNewMove();
     },
@@ -108,7 +112,14 @@ export default {
         return this.redScore
         } 
     },
-    
+
+    addVictoryToRightTeam(){
+        if (this.wonGame && this.team === 'Red') {
+          this.blueWins = this.blueWins + 1
+        } else if (this.wonGame && this.team === 'Blue')
+          this.redWins = this.redWins + 1
+    },
+
     nextTurn(){
       
       if(this.turn === "Red") {

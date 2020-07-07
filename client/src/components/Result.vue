@@ -17,7 +17,7 @@ export default {
         gameCompleted(){
             this.$parent.endGame()
             this.$parent.startGame()
-        }
+        },
     }
 }
 </script>
