@@ -18,6 +18,7 @@ import User from "./components/User";
 import ScoreCard from "./components/ScoreCard";
 import Menu from "./components/Menu";
 import Result from "./components/Result";
+import { socketIo } from "@/main"
 
 export default {
   name: 'App',
@@ -43,9 +44,17 @@ export default {
       gameStatus: {}
     }
   },
+
   mounted() {
     this.fetchCards();
     this.fetchGameStatus();
+    socketIo.on("connect", function(){
+      console.log("connected");
+    })
+    socketIo.on("respond", function(data){
+      console.log(data);
+      socketIo.emit("respond-back", "hey back")
+    })
 
     eventBus.$on("display-to-app", (cards) => {
       this.cards = cards
@@ -166,6 +175,7 @@ export default {
     startGame() {
       this.cards = this.shuffle(this.createCard(this.cards))
       this.saveNewGameStatus()
+      this.$socket.emit('Hello', "hey")
     },
 
     fetchGameStatus(){
