@@ -166,6 +166,10 @@ export default {
     startGame() {
       this.cards = this.shuffle(this.createCard(this.cards))
       this.saveNewGameStatus()
+      this.gameOn = true; 
+      this.turn = 'Red';
+      this.round = this.round + 1;    
+      
     },
 
     fetchGameStatus(){
@@ -176,17 +180,14 @@ export default {
     },
 
     saveNewGameStatus() { 
-        this.gameOn = true; 
-        this.redTurn = true;
-        this.round = this.round + 1;    
-        const updatedGameStatus = {
-          ...this.gameStatus,
-          gameOn: this.gameOn,
-          cards: this.cards,
-          round: this.round,
-          redScore: this.redScore,
-          blueScore: this.blueScore,
-          turn: this.turn
+      const updatedGameStatus = {
+        ...this.gameStatus,
+        gameOn: this.gameOn,
+        cards: this.cards,
+        round: this.round,
+        redScore: this.redScore,
+        blueScore: this.blueScore,
+        turn: this.turn
       }
       CodeBreakerService.updateGameStatus(updatedGameStatus);
       this.gameStatus = updatedGameStatus
