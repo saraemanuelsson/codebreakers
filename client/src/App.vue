@@ -228,6 +228,7 @@ html {
 }
 
 #score-bar{
+  margin-top: -3%;
   grid-column: 2/5;
 }
 
@@ -254,7 +255,7 @@ html {
   display: grid;
   grid-template-columns: 20% 20% 20% 20% 20%;
   border-radius: 5%;
-  padding: 0.8vw;
+  padding: 0.6vw;
 }
 
 .blueTurn {
@@ -263,6 +264,7 @@ html {
 }
 
 #toggle-game-button{
+  margin-top: -8%;
   position: relative;
   top: 100%;
   border-style: none;

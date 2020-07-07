@@ -75,10 +75,4 @@ export default {
     padding: 0 !important;
 
 }
-
-h2 {
-    margin: 0 !important;
-    padding: 0 !important;
-    vertical-align: middle;
-}
 </style>
