@@ -11,9 +11,9 @@
             <li @click="endGame">End Current Game</li>
             <li @click="resumeGame">Resume Game</li>
             <a href="https://czechgames.com/files/rules/codenames-rules-en.pdf" target="_blank"><li>Show Rules</li></a>
-            <li></li>
-            <li>RED {{redWins}}</li>   
-            <li>BLUE {{blueWins}}</li>
+            <li class='round'>ROUND  {{round}}</li>
+            <li class='red-wins'>RED  {{redWins}}</li>   
+            <li class='blue-wins'>BLUE  {{blueWins}}</li>
         </ul>
      </div>
   </nav>
@@ -26,7 +26,7 @@ import App from '../App'
 
 export default {
 name: 'menu-button',
-props: ['gameOn', 'redWins', 'blueWins'],
+props: ['gameOn', 'redWins', 'blueWins', 'round'],
 methods: {
   startGame(){
     this.$parent.startGame()
@@ -160,5 +160,24 @@ a:link, a:visited {
 /* } */
 a {
     text-decoration: none;
+}
+
+.round {
+  background: linear-gradient(135deg, rgba(60, 60, 60, 0.836), rgb(0, 0, 0));
+  border: 2px solid rgb(60, 60, 60);
+  color: white;
+  text-align: left;
+}
+
+.red-wins {
+  background: linear-gradient(135deg, rgb(194, 73, 73), rgb(177, 8, 8));
+  border: 2px solid rgb(177, 8, 8);
+  color: white;
+}
+
+.blue-wins {
+  background: linear-gradient(135deg, rgba(55, 154, 211, 0.836), rgb(20, 117, 134));
+  border: 2px solid rgb(22, 94, 107);
+  color: white;
 }
 </style>
