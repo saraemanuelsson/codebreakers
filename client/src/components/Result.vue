@@ -1,5 +1,6 @@
 <template>
     <div v-if="team.length != 0" class="modal" v-bind:class="team">
+        <img v-if="!wonGame" src="../../public/assassin.png"/>
         <h1 v-if="wonGame">Congratulations! Good job {{team}} team!</h1>
         <h1 v-else-if="!wonGame">Oh no! Better luck next time {{team}} team!</h1>
         <button id="new-game" v-on:click="gameCompleted">New Game</button>
@@ -22,6 +23,13 @@ export default {
 </script>
 
 <style>
+img{
+    width: 20vw;
+    position: fixed;
+    margin-top: 2vw;
+    margin-left: -10vw;
+    z-index: -1;
+}
 .modal {
 
   position: fixed; /* Stay in place */
