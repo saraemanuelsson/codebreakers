@@ -1,10 +1,25 @@
 <template>
 <div id="score-wrapper">
   <div id="redwrapper">
-      <h2 id="redcards">{{redScore}}</h2>
+      <div v-if="redScore > 1" class="redcards"></div>
+      <div v-if="redScore > 2" class="redcards"></div>
+      <div v-if="redScore > 3" class="redcards"></div>
+      <div v-if="redScore > 4" class="redcards"></div>
+      <div v-if="redScore > 5" class="redcards"></div>
+      <div v-if="redScore > 6" class="redcards"></div>
+      <div v-if="redScore > 7" class="redcards"></div>
+      <div v-if="redScore > 8" class="redcards"></div>
+      <div id="redScoreCard" class="redcards">{{redScore}}</div>
   </div>
   <div id="bluewrapper">
-      <h2 id="bluecards">{{blueScore}}</h2>
+      <div v-if="blueScore > 1" class="bluecards"></div>
+      <div v-if="blueScore > 2" class="bluecards"></div>
+      <div v-if="blueScore > 3" class="bluecards"></div>
+      <div v-if="blueScore > 4" class="bluecards"></div>
+      <div v-if="blueScore > 5" class="bluecards"></div>
+      <div v-if="blueScore > 6" class="bluecards"></div>
+      <div v-if="blueScore > 7" class="bluecards"></div>
+      <div id="blueScoreCard" class="bluecards">{{blueScore}}</div>
   </div>
 </div>
 </template>
@@ -21,11 +36,8 @@ export default {
     methods: {
         toggleGameState(){
                 this.$parent.toggleGameState()
-
         }
     }
-    
-
 }
 </script>
 
@@ -42,43 +54,42 @@ export default {
     display: flex;
     flex-direction: row;
     grid-column: 1/2;
+    margin-left: 3em;
 }
 
-#redcards{
-    box-shadow: -16px -1px 16px -4px rgba(0,0,0,0.75);
-    color:white;
+.redcards{
+    color: white;
+    border: 2px solid rgb(177, 8, 8);
+    background: linear-gradient(135deg, rgba(194, 73, 73, 0.836), rgb(177, 8, 8));
     height: 4vw;
     width: 4vw;
-    line-height: 4vh;
-    background-color: rgb(139, 0, 0);
     border-radius: 15%;
     text-align: center;
-    margin: 0 !important;
-    padding: 0 !important;
+    padding: 0 important;
+    font-size: 3em;
+    line-height: 1.3em;
+    margin-left: -1em;
 }
+
 #bluewrapper{
     display: flex;
     flex-direction: row-reverse;
     grid-column: 3/4;
+    margin-right: 3em;
 }
 
-#bluecards{
+.bluecards{
     color: rgb(105, 105, 105);
+    border: 2px solid rgb(22, 94, 107);
     height: 4vw;
     width: 4vw;
-    box-shadow: -16px -1px 16px -4px rgba(0,0,0,0.75);
+    background: linear-gradient(135deg, rgba(55, 154, 211, 0.836), rgb(20, 117, 134));
     border-radius: 15%;
-    background-color: rgba(10, 136, 177, 0.838);
     text-align: center;
     color: white;
-    margin: 0 !important;
     padding: 0 !important;
-
-}
-
-h2 {
-    margin: 0 !important;
-    padding: 0 !important;
-    vertical-align: middle;
+    font-size: 3em;
+    line-height: 1.3em;
+    margin-right: -1em;
 }
 </style>
