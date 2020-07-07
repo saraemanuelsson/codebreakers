@@ -66,10 +66,12 @@ export default {
   methods: {
 
     clickCard(card) {
+      this.addPointsToRightTeam(card);
+      
       const index = this.cards.indexOf(card);
       this.cards[index].isClicked = true;
       
-      this.addPointsToRightTeam(card);
+      
       
       if (card.colour === "Black") {
         this.team = this.turn;
@@ -98,10 +100,10 @@ export default {
     },
 
     addPointsToRightTeam(card){
-        if (card.colour === 'Blue') {
+        if (card.colour === 'Blue' && !card.isClicked) {
         this.blueScore -= 1
         return this.blueScore
-        } else if (card.colour === 'Red') {
+        } else if (card.colour === 'Red' && !card.isClicked) {
         this.redScore -= 1
         return this.redScore
         } 
