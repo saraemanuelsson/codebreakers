@@ -39,7 +39,8 @@ export default {
       blueScore: 8,
       round: 0,
       team: "",
-      wonGame: false
+      wonGame: false,
+      gameStatus: {}
     }
   },
   mounted() {
@@ -137,9 +138,9 @@ export default {
 
     },
 
-    // fetchCurrentGame(){
+    fetchCurrentGame(){
 
-    // },
+    },
 
     createCard(cardsFromDatabase){
       this.shuffle(this.words)
@@ -165,12 +166,12 @@ export default {
     saveNewGameStatus() { 
       CodeBreakerService.getGameStatus()
       .then(gameStatuses => {
-        const gameStatus = gameStatuses[0]
+        this.gameStatus = gameStatuses[0]
         this.gameOn = true; 
         this.redTurn = true;
         this.round = this.round + 1;    
         const updatedGameStatus = {
-          ...gameStatus,
+          ...this.gameStatus,
           gameOn: this.gameOn,
           cards: this.cards,
           round: this.round,
@@ -184,19 +185,14 @@ export default {
     },
 
     saveNewMove() { 
-      CodeBreakerService.getGameStatus()
-      .then(gameStatuses => {
-        const gameStatus = gameStatuses[0]   
-        const updatedGameStatus = {
-          ...gameStatus,
+      const updatedGameStatus = {
+          ...this.gameStatus,
           cards: this.cards,
           turn: this.turn,
           redScore: this.redScore,
           blueScore: this.blueScore
-      }
-      
+      };
       CodeBreakerService.updateGameStatus(updatedGameStatus);
-      })
     }
   }
 }
