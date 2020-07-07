@@ -10,9 +10,7 @@
             <li @click="startGame">Start New Game</li>
             <li @click="endGame">End Current Game</li>
             <li @click="resumeGame">Resume Game</li>
-            <li> <br></li>
             <a href="https://czechgames.com/files/rules/codenames-rules-en.pdf" target="_blank"><li>Show Rules</li></a>
-            <li><br></li>
         </ul>
      </div>
   </nav>
@@ -117,19 +115,16 @@ methods: {
   margin: -100px 0 0 -50px;
   padding: 50px;
   padding-top: 125px; 
-  
   list-style-type: none;
   -webkit-font-smoothing: antialiased;
-  
   transform-origin: 0% 0%;
-  transform: translate(450%, 0);
-  
+  transform: translate(90vw, 0);
   transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
 }
-#menu li
-{
-  padding: 10px 0;
-  font-size: 1.3vw;
+#menu li{
+  text-align: right;
+  padding: 0.2vw 1vw;
+  font-size: 1.2vw;
 }
 #menu li:hover{
     color: rgba(255, 136, 0, 0.753);
@@ -149,9 +144,10 @@ li {
     /* padding: 5%; */
     /* padding-left: 10%; */
     text-align: right;
-    /* background-color: rgba(169, 169, 169, 0.438); */
+    background-color: rgba(169, 169, 169, 0.438);
     margin-left: -70%;
     margin-right: 80%;
+    margin-bottom: 5%;
 }
 a:link, a:visited {
     color: rgb(0, 0, 0);
