@@ -2,7 +2,6 @@
   <div id="app">
     <button id="toggle-game-button" v-on:click="toggleGameState">{{ gameStateText }}</button>
     <menu-button id="menu" :gameOn="gameOn"></menu-button>
-    <img v-if="!gameOn" id="codebreaker" src="../public/Vanilla-0.5s-277px (1).gif"/>
     <score-bar id="score-bar" :redScore="redScore" :blueScore="blueScore" :gameOn="gameOn"></score-bar>
     <grid class="grid" v-bind:class="{blueTurn:(turn === 'Blue')}" :cards="cards" :gameOn="gameOn" ></grid>
     <result-display :team="team" :wonGame="wonGame"></result-display>
@@ -213,11 +212,7 @@ export default {
 <style>
 @import url(https://fonts.googleapis.com/css?family=Rubik:300,300italic,regular,italic,500,500italic,700,700italic,900,900italic);
 @import url(https://fonts.googleapis.com/css?family=Bungee:regular);
-#codebreaker{
-  width: 100%;
-  margin-top: 10%;
-  margin-left: 0.5%;
-}
+
 html {
   background: url('../public/Codenamestable.png') no-repeat center center fixed;
   -webkit-background-size: cover;
