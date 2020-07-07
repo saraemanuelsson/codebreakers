@@ -80,8 +80,7 @@ p {
 }
 
 .card .Black {
-  background-color: #3C3C3C;
-  /* background: linear-gradient(135deg, rgba(194, 73, 73, 0.836), rgb(177, 8, 8)); */
+  background: linear-gradient(135deg, rgba(60, 60, 60, 0.836), rgb(0, 0, 0));
   color: white;
   width: 4.5vw;
   height: 4.5vw;

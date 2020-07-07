@@ -251,9 +251,11 @@ html {
 
 .grid {
   transition: 0.7s;
-  box-shadow: -5px 7px 62px 16px rgb(211, 29, 29);
-  border: 0.8rem solid rgba(75, 72, 72, 0.719);
-  background-color: rgba(0, 0, 0, 0.678);
+  box-shadow: -5px 7px 62px 16px rgb(211, 29, 29),
+    inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2),
+    inset -6px -6px 10px 0 rgba(128, 125, 122, 0.5);
+  border: 1rem solid rgb(60, 60, 60);
+  background-color: rgb(85, 84, 79);
   grid-column: 2/5;
   display: grid;
   grid-template-columns: 20% 20% 20% 20% 20%;
@@ -263,7 +265,9 @@ html {
 
 .blueTurn {
   transition: 0.7s;
-  box-shadow: -5px 7px 62px 16px rgb(32, 76, 221);
+  box-shadow: -5px 7px 62px 16px rgb(32, 76, 221),
+    inset 6px 6px 10px 0 rgba(0, 0, 0, 0.2),
+    inset -6px -6px 10px 0 rgba(128, 125, 122, 0.5);
 }
 
 #toggle-game-button{
