@@ -45,6 +45,7 @@ export default {
   },
   mounted() {
     this.fetchCards();
+    this.fetchGameStatus();
 
     eventBus.$on("display-to-app", (cards) => {
       this.cards = cards
@@ -138,8 +139,12 @@ export default {
 
     },
 
-    fetchCurrentGame(){
-
+    resumeGame(){
+      this.gameOn = true
+      this.cards = this.gameStatus.cards;
+      this.turn = this.gameStatus.turn;
+      this.redScore = this.gameStatus.redScore;
+      this.blueScore = this.gameStatus.blueScore;
     },
 
     createCard(cardsFromDatabase){
@@ -163,10 +168,14 @@ export default {
       this.saveNewGameStatus()
     },
 
-    saveNewGameStatus() { 
+    fetchGameStatus(){
       CodeBreakerService.getGameStatus()
       .then(gameStatuses => {
         this.gameStatus = gameStatuses[0]
+      })
+    },
+
+    saveNewGameStatus() { 
         this.gameOn = true; 
         this.redTurn = true;
         this.round = this.round + 1;    
@@ -179,9 +188,8 @@ export default {
           blueScore: this.blueScore,
           turn: this.turn
       }
-      
       CodeBreakerService.updateGameStatus(updatedGameStatus);
-      })
+      this.gameStatus = updatedGameStatus
     },
 
     saveNewMove() { 
