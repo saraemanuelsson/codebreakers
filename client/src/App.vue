@@ -86,6 +86,7 @@ export default {
       this.blueScore = 8;
       this.team = "";
       this.wonGame = false;
+      this.gameOn = false;
     },
 
     checkIfWrongColour(card){
@@ -135,6 +136,11 @@ export default {
       })
 
     },
+
+    // fetchCurrentGame(){
+
+    // },
+
     createCard(cardsFromDatabase){
       this.shuffle(this.words)
       return cardsFromDatabase.map((card, i) => {

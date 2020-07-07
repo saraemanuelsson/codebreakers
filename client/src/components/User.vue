@@ -15,27 +15,16 @@ export default  {
     props: ['cards', 'gameOn'],
     methods: {
         displayColours() {
-            console.log(this.cards)
             const unHiddenCards = this.cards.map((card) => card.isHidden = false)
             eventBus.$emit("display-to-app", this.cards)
         },
         
         hideColours() {
-            console.log(this.cards)
             const hiddenCards = this.cards.map((card) => card.isHidden = true)
             eventBus.$emit("hide-to-app", this.cards)
-            console.log(this.cards)
             
         }
     }
-    // methods: {
-    //     displayColours() {
-    //         eventBus.$emit('display-colours', false)
-    //     },
-    //     hideColours() {
-    //         eventBus.$emit('hide-colours', true)
-            
-        // }
     
 }
 </script>

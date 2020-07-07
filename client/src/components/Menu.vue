@@ -8,7 +8,7 @@
           <span></span>
         <ul id="menu">
             <li @click="startGame">Start New Game</li>
-            <li>End Current Game</li>
+            <li @click="endGame">End Current Game</li>
             <li> <br></li>
             <a href="https://czechgames.com/files/rules/codenames-rules-en.pdf" target="_blank"><li>Show Rules</li></a>
             <li><br></li>
@@ -27,13 +27,13 @@ import App from '../App'
 export default {
 name: 'menu-button',
 props: ['gameOn'],
-methods: {startGame(){
+methods: {
+  startGame(){
     this.$parent.startGame()
-    this.$parent.fetchCards()}
-    // startGame() {
-    //   // this.shuffle(this.cards)
-    //   this.fetchGameStatus()
-    // }
+  },
+  endGame(){
+    this.$parent.endGame();
+  }
 }
 }
 </script>
