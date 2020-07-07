@@ -9,10 +9,10 @@
         <ul id="menu">
             <li @click="startGame">Start New Game</li>
             <li @click="endGame">End Current Game</li>
+            <li @click="resumeGame">Resume Game</li>
             <li> <br></li>
             <a href="https://czechgames.com/files/rules/codenames-rules-en.pdf" target="_blank"><li>Show Rules</li></a>
             <li><br></li>
-            <li>Play with picture cards</li>
         </ul>
      </div>
   </nav>
@@ -33,6 +33,9 @@ methods: {
   },
   endGame(){
     this.$parent.endGame();
+  },
+  resumeGame(){
+    this.$parent.resumeGame();
   }
 }
 }

@@ -5,7 +5,7 @@ db.gameStatus.insertMany([
   {
     gameOn: false,
     turn: "Red",
-    currentCards: [],
+    cards: [],
     redScore: 9,
     blueScore: 8,
     round: 0

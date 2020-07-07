@@ -39,11 +39,13 @@ export default {
       blueScore: 8,
       round: 0,
       team: "",
-      wonGame: false
+      wonGame: false,
+      gameStatus: {}
     }
   },
   mounted() {
     this.fetchCards();
+    this.fetchGameStatus();
 
     eventBus.$on("display-to-app", (cards) => {
       this.cards = cards
@@ -137,9 +139,13 @@ export default {
 
     },
 
-    // fetchCurrentGame(){
-
-    // },
+    resumeGame(){
+      this.gameOn = true
+      this.cards = this.gameStatus.cards;
+      this.turn = this.gameStatus.turn;
+      this.redScore = this.gameStatus.redScore;
+      this.blueScore = this.gameStatus.blueScore;
+    },
 
     createCard(cardsFromDatabase){
       this.shuffle(this.words)
@@ -162,15 +168,19 @@ export default {
       this.saveNewGameStatus()
     },
 
-    saveNewGameStatus() { 
+    fetchGameStatus(){
       CodeBreakerService.getGameStatus()
       .then(gameStatuses => {
-        const gameStatus = gameStatuses[0]
+        this.gameStatus = gameStatuses[0]
+      })
+    },
+
+    saveNewGameStatus() { 
         this.gameOn = true; 
         this.redTurn = true;
         this.round = this.round + 1;    
         const updatedGameStatus = {
-          ...gameStatus,
+          ...this.gameStatus,
           gameOn: this.gameOn,
           cards: this.cards,
           round: this.round,
@@ -178,25 +188,19 @@ export default {
           blueScore: this.blueScore,
           turn: this.turn
       }
-      
       CodeBreakerService.updateGameStatus(updatedGameStatus);
-      })
+      this.gameStatus = updatedGameStatus
     },
 
     saveNewMove() { 
-      CodeBreakerService.getGameStatus()
-      .then(gameStatuses => {
-        const gameStatus = gameStatuses[0]   
-        const updatedGameStatus = {
-          ...gameStatus,
+      const updatedGameStatus = {
+          ...this.gameStatus,
           cards: this.cards,
           turn: this.turn,
           redScore: this.redScore,
           blueScore: this.blueScore
-      }
-      
+      };
       CodeBreakerService.updateGameStatus(updatedGameStatus);
-      })
     }
   }
 }
