@@ -150,14 +150,10 @@ export default {
         turn: this.turn,
         team: this.team,
         wonGame: this.wonGame,
-<<<<<<< HEAD
-        assassinClicked: this.assassinClicked
-            
-=======
         redWins: this.redWins,
         blueWins: this.blueWins,
-        round: this.round       
->>>>>>> develop
+        round: this.round,    
+        assassinClicked: this.assassinClicked   
       })
     },
 
