@@ -1,4 +1,6 @@
-const baseURL = 'http://localhost:3000/api/'
+import {serverURL} from "@/serverURL.js"
+
+const baseURL = serverURL + "/api/"
 const cards = "preplaycards"
 const words = "words"
 const gameStatus = "gamestatus"
