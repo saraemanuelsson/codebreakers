@@ -43,7 +43,7 @@ export default {
       wonGame: false,
       wonRound: false,
       gameStatus: {},
-
+      assassinClicked: false,
       redWins: 0,
       blueWins: 0
     }
@@ -76,6 +76,7 @@ export default {
       this.gameOn = data.gameOn
       this.team = data.team
       this.wonGame = data.wonGame
+      this.assassinClicked = data.assassinClicked
     })
 
     eventBus.$on("display-to-app", (cards) => {
@@ -106,6 +107,7 @@ export default {
       if (card.colour === "Black") {
         this.team = this.turn;
         this.wonRound = true;
+        this.assassinClicked = true;
       } else if (this.redScore === 0 || this.blueScore === 0) {
         this.team = card.colour;
         this.wonGame = true;
@@ -125,7 +127,9 @@ export default {
         blueScore: this.blueScore,
         turn: this.turn,
         team: this.team,
-        wonGame: this.wonGame        
+        wonGame: this.wonGame,
+        assassinClicked: this.assassinClicked
+            
       })
     },
 
@@ -229,6 +233,7 @@ export default {
       this.round = this.round + 1;
       this.redScore = 9;
       this.blueScore = 8;
+      this.assassinClicked = false;
       this.updateForAllPlayers();
       
     },
@@ -248,6 +253,7 @@ export default {
         round: this.round,
         redScore: this.redScore,
         blueScore: this.blueScore,
+        assassinClicked: this.assassinClicked,
         turn: this.turn
       }
       CodeBreakerService.updateGameStatus(updatedGameStatus);
@@ -262,7 +268,8 @@ export default {
           redScore: this.redScore,
           blueScore: this.blueScore,
           team: this.team,
-          wonGame: this.wonGame
+          wonGame: this.wonGame,
+          assassinClicked: this.assassinClicked
       };
       CodeBreakerService.updateGameStatus(updatedGameStatus);
     }
