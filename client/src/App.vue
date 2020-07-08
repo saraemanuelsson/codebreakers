@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <button id="toggle-game-button" v-on:click="toggleGameState">{{ gameStateText }}</button>
-    <menu-button id="menu" :gameOn="gameOn" :blueWins="blueWins" :redWins="redWins" :round="round"></menu-button>
+    <menu-button id="menu" :gameOn="gameOn" :blueWins="blueWins" :redWins="redWins" :round="round" :redScore="redScore" :blueScore="blueScore"></menu-button>
     <score-bar id="score-bar" :redScore="redScore" :blueScore="blueScore" :gameOn="gameOn"></score-bar>
     <grid class="grid" v-bind:class="{blueTurn:(turn === 'Blue')}" :cards="cards" :gameOn="gameOn" ></grid>
     <result-display :team="team" :wonGame="wonGame"></result-display>
@@ -18,6 +18,7 @@ import User from "./components/User";
 import ScoreCard from "./components/ScoreCard";
 import Menu from "./components/Menu";
 import Result from "./components/Result";
+import { socketIo } from "@/main"
 
 export default {
   name: 'App',
@@ -46,9 +47,34 @@ export default {
       blueWins: 0
     }
   },
+
   mounted() {
     this.fetchCards();
     this.fetchGameStatus();
+    socketIo.on("connect", function(){
+      console.log("connected");
+    })
+    socketIo.on("disconnect", function(){
+      console.log("disconnected");
+    })
+
+    socketIo.on("test", function(data){
+      socketIo.emit("game-status", this.gameStatus)
+      
+    })
+
+    socketIo.on("updated-game", function(data){
+      console.log("on-updated-game");
+      eventBus.$emit("change", data);
+    })
+
+    eventBus.$on("change", (data) => {
+      this.turn = data.turn
+      this.redScore = data.redScore
+      this.blueScore = data.blueScore
+      this.cards = data.cards
+      this.gameOn = data.gameOn
+    })
 
     eventBus.$on("display-to-app", (cards) => {
       this.cards = cards
@@ -63,12 +89,13 @@ export default {
   computed: {
     gameStateText() {
       return this.gameOn ? 'End turn' : 'Start game'
-    }
+    },
     
   },
   methods: {
 
     clickCard(card) {
+      this.checkIfWrongColour(card);
       this.addPointsToRightTeam(card);
       
       const index = this.cards.indexOf(card);
@@ -82,26 +109,36 @@ export default {
         this.wonGame = true;
       };
      
-     
       this.addVictoryToRightTeam()
-      this.checkIfWrongColour(card);
       this.saveNewMove();
+      this.updateForAllPlayers();
+    },
+
+    updateForAllPlayers(){
+        socketIo.emit("game-status", {
+        gameOn: this.gameOn,
+        cards: this.cards,
+        redScore: this.redScore,
+        blueScore: this.blueScore,
+        turn: this.turn        
+      })
     },
 
     endGame(){
       this.turn = "Red";
-      this.redScore = 9;
-      this.blueScore = 8;
       this.team = "";
       this.wonGame = false;
       this.gameOn = false;
+      this.saveNewMove();
+      this.saveNewGameStatus();
     },
 
     checkIfWrongColour(card){
-        if (card.colour !== this.turn) {
+        if (card.colour !== this.turn && !card.isClicked) {
         this.nextTurn()
       };
     },
+
 
     addPointsToRightTeam(card){
         if (card.colour === 'Blue' && !card.isClicked) {
@@ -110,7 +147,7 @@ export default {
         } else if (card.colour === 'Red' && !card.isClicked) {
         this.redScore -= 1
         return this.redScore
-        } 
+        }
     },
 
     addVictoryToRightTeam(){
@@ -128,7 +165,6 @@ export default {
         this.turn = "Red"
       }
       this.saveNewMove()
- 
     },
     
     shuffle(array) {
@@ -158,6 +194,7 @@ export default {
       this.turn = this.gameStatus.turn;
       this.redScore = this.gameStatus.redScore;
       this.blueScore = this.gameStatus.blueScore;
+      this.updateForAllPlayers();
     },
 
     createCard(cardsFromDatabase){
@@ -177,11 +214,15 @@ export default {
     },
 
     startGame() {
+
       this.cards = this.shuffle(this.createCard(this.cards))
       this.saveNewGameStatus()
       this.gameOn = true; 
       this.turn = 'Red';
-      this.round = this.round + 1;    
+      this.round = this.round + 1;
+      this.redScore = 9;
+      this.blueScore = 8;
+      this.updateForAllPlayers();
       
     },
 

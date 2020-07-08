@@ -8,8 +8,8 @@
           <span></span>
         <ul id="menu">
             <li @click="startGame">Start New Game</li>
-            <li @click="endGame">End Current Game</li>
-            <li v-if="!gameOn" @click="resumeGame">Resume Game</li>
+            <li v-if="gameOn" @click="endGame">End Current Game</li>
+            <li v-if="!gameOn && !canResumeGame" @click="resumeGame">Resume Game</li>
             <a href="https://czechgames.com/files/rules/codenames-rules-en.pdf" target="_blank"><li>Show Rules</li></a>
             <li class='round'>ROUND  {{round}}</li>
             <li class='red-wins'>RED  {{redWins}}</li>   
@@ -26,7 +26,7 @@ import App from '../App'
 
 export default {
 name: 'menu-button',
-props: ['gameOn', 'redWins', 'blueWins', 'round'],
+props: ['gameOn', 'redWins', 'blueWins', 'round', 'redScore', 'blueScore'],
 methods: {
   startGame(){
     this.$parent.startGame()
@@ -37,6 +37,11 @@ methods: {
   resumeGame(){
     this.$parent.resumeGame();
   }
+},
+computed:{
+   canResumeGame(){
+      return (this.redScore === 0 || this.blueScore === 0);
+    }
 }
 }
 </script>

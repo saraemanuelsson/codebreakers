@@ -16,7 +16,7 @@ export default {
     methods: {
         gameCompleted(){
             this.$parent.endGame()
-        },
+        }
     }
 }
 </script>
