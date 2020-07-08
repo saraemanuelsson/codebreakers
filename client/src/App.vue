@@ -64,7 +64,6 @@ export default {
     })
 
     socketIo.on("updated-game", function(data){
-      console.log("on-updated-game");
       eventBus.$emit("change", data);
     })
 
@@ -74,6 +73,8 @@ export default {
       this.blueScore = data.blueScore
       this.cards = data.cards
       this.gameOn = data.gameOn
+      this.team = data.team
+      this.wonGame = data.wonGame
     })
 
     eventBus.$on("display-to-app", (cards) => {
@@ -120,7 +121,9 @@ export default {
         cards: this.cards,
         redScore: this.redScore,
         blueScore: this.blueScore,
-        turn: this.turn        
+        turn: this.turn,
+        team: this.team,
+        wonGame: this.wonGame        
       })
     },
 
@@ -131,6 +134,7 @@ export default {
       this.gameOn = false;
       this.saveNewMove();
       this.saveNewGameStatus();
+      this.updateForAllPlayers();
     },
 
     checkIfWrongColour(card){
@@ -253,7 +257,9 @@ export default {
           cards: this.cards,
           turn: this.turn,
           redScore: this.redScore,
-          blueScore: this.blueScore
+          blueScore: this.blueScore,
+          team: this.team,
+          wonGame: this.wonGame
       };
       CodeBreakerService.updateGameStatus(updatedGameStatus);
     }
