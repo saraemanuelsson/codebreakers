@@ -25,7 +25,7 @@ const MongoClient = require('mongodb').MongoClient;
 const createRouter = require('./helpers/create_routers.js');
 
 app.use(bodyParser.json());
-app.use(cors({credentials: true, origin: "http://localhost:8081"}));
+app.use(cors({credentials: true, origin: "http://localhost:8080"}));
 
 MongoClient.connect('mongodb://localhost:27017')
   .then((player) => {

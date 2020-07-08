@@ -151,9 +151,9 @@ export default {
     },
 
     addVictoryToRightTeam(){
-        if (this.wonGame && this.team === 'Red') {
+        if (this.wonGame && this.team === 'Blue') {
           this.blueWins = this.blueWins + 1
-        } else if (this.wonGame && this.team === 'Blue')
+        } else if (this.wonGame && this.team === 'Red')
           this.redWins = this.redWins + 1
     },
 
