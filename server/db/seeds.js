@@ -10,7 +10,9 @@ db.gameStatus.insertMany([
     blueScore: 8,
     round: 0,
     team: "",
-    wonGame: false
+    wonGame: false,
+    redWins: 0,
+    blueWins: 0
   }
 ])
 
