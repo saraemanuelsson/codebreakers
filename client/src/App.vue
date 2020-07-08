@@ -113,6 +113,7 @@ export default {
       };
      
       this.addVictoryToRightTeam()
+      // card.word = ""
       this.saveNewMove();
       this.updateForAllPlayers();
     },

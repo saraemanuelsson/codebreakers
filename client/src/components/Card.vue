@@ -43,7 +43,7 @@ export default {
   height: 4.5vw;
   margin: 0.6vw;
   margin-left: 0.6vw;
-  padding: 0.6vw;
+  padding: 0.6vw ;
   border-radius: 15%;
 }
 
