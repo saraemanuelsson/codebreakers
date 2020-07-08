@@ -168,7 +168,9 @@ export default {
       this.saveNewGameStatus()
       this.gameOn = true; 
       this.turn = 'Red';
-      this.round = this.round + 1;    
+      this.round = this.round + 1;
+      this.redScore = 9;
+      this.blueScore = 8;
       
     },
 
