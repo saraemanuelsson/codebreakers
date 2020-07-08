@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <button id="toggle-game-button" v-on:click="toggleGameState">{{ gameStateText }}</button>
-    <menu-button id="menu" :gameOn="gameOn" :blueWins="blueWins" :redWins="redWins" :round="round" :redScore="redScore" :blueScore="blueScore" assassinClicked:="assassinClicked"></menu-button>
+    <menu-button id="menu" :gameOn="gameOn" :blueWins="blueWins" :redWins="redWins" :round="round" :redScore="redScore" :blueScore="blueScore" :assassinClicked="assassinClicked"></menu-button>
     <score-bar id="score-bar" :redScore="redScore" :blueScore="blueScore" :gameOn="gameOn"></score-bar>
     <grid class="grid" v-bind:class="{blueTurn:(turn === 'Blue')}" :cards="cards" :gameOn="gameOn" ></grid>
     <result-display :team="team" :wonGame="wonGame"></result-display>

@@ -9,7 +9,7 @@
         <ul id="menu">
             <li @click="startGame">Start New Game</li>
             <li v-if="gameOn" @click="endGame">End Current Game</li>
-            <li v-if="!gameOn && assassinClicked" @click="resumeGame">Resume Game</li>
+            <li v-if="!gameOn && !assassinClicked" @click="resumeGame">Resume Game</li>
             <a href="https://czechgames.com/files/rules/codenames-rules-en.pdf" target="_blank"><li>Show Rules</li></a>
             <li class='round'>ROUND  {{round}}</li>
             <li class='red-wins'>RED  {{redWins}}</li>   
