@@ -43,7 +43,6 @@ export default {
       wonGame: false,
       wonRound: false,
       gameStatus: {},
-
       redWins: 0,
       blueWins: 0
     }
@@ -76,6 +75,9 @@ export default {
       this.gameOn = data.gameOn
       this.team = data.team
       this.wonGame = data.wonGame
+      this.redWins = data.redWins
+      this.blueWins = data.blueWins
+      this.round = data.round
     })
 
     eventBus.$on("display-to-app", (cards) => {
@@ -125,7 +127,10 @@ export default {
         blueScore: this.blueScore,
         turn: this.turn,
         team: this.team,
-        wonGame: this.wonGame        
+        wonGame: this.wonGame,
+        redWins: this.redWins,
+        blueWins: this.blueWins,
+        round: this.round       
       })
     },
 
