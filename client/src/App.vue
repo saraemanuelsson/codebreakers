@@ -107,9 +107,9 @@ export default {
         this.team = this.turn;
         this.wonRound = true;
         this.assassinClicked = true;
-        this.addVictoryToRightTeam()
+        this.addVictoryAssassin(this.team)
         this.saveNewMove();
-      this.saveNewGameStatus();
+        this.saveNewGameStatus();
 
         this.updateForAllPlayers();
         this.wonGame = false;
@@ -117,7 +117,7 @@ export default {
         this.team = card.colour;
         this.wonGame = true;
         this.wonRound = true;
-        this.addVictoryToRightTeam()
+        this.addVictoryAllCards(this.team)
         this.saveNewMove();
       this.saveNewGameStatus();
 
@@ -179,11 +179,21 @@ export default {
         }
     },
 
-    addVictoryToRightTeam(){
+    addVictoryAllCards(team){
         if (this.wonRound && this.team === 'Blue') {
           this.blueWins = this.blueWins + 1
         } else if (this.wonRound && this.team === 'Red')
           this.redWins = this.redWins + 1
+    },
+
+    addVictoryAssassin(team){
+        if (this.assassinClicked && team === "Red"){
+            this.blueWins = this.blueWins + 1
+        } else if (this.assassinClicked && team === "Blue"){
+            this.redWins = this.redWins + 1
+        }
+
+
     },
 
     nextTurn(){
