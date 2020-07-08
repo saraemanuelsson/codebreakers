@@ -1,1 +1,1 @@
-export const serverURL = "http://8c4c51a9a036.ngrok.io"
+export const serverURL = "http://localhost:3000"
