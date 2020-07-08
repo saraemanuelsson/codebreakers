@@ -76,13 +76,10 @@ export default {
       this.gameOn = data.gameOn
       this.team = data.team
       this.wonGame = data.wonGame
-<<<<<<< HEAD
       this.assassinClicked = data.assassinClicked
-=======
       this.redWins = data.redWins
       this.blueWins = data.blueWins
       this.round = data.round
->>>>>>> develop
     })
 
     eventBus.$on("display-to-app", (cards) => {
