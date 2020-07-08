@@ -1,11 +1,12 @@
 <template>
   <div id="app">
     <button id="toggle-game-button" v-on:click="toggleGameState">{{ gameStateText }}</button>
-    <menu-button id="menu" :gameOn="gameOn" :blueWins="blueWins" :redWins="redWins" :round="round" :redScore="redScore" :blueScore="blueScore" :assassinClicked="assassinClicked"></menu-button>
+    <menu-button id="menu" :teamAssigned1="teamAssigned1" :teamAssigned2="teamAssigned2" :gameOn="gameOn" :blueWins="blueWins" :redWins="redWins" :round="round" :redScore="redScore" :blueScore="blueScore" :assassinClicked="assassinClicked"></menu-button>
     <score-bar id="score-bar" :redScore="redScore" :blueScore="blueScore" :gameOn="gameOn"></score-bar>
     <grid class="grid" v-bind:class="{blueTurn:(turn === 'Blue')}" :cards="cards" :gameOn="gameOn" ></grid>
     <result-display :team="team" :wonGame="wonGame"></result-display>
     <user id="user-bar" :cards="cards" :gameOn="gameOn"></user>
+    <!-- <h1 id="assign-banner" v-if="!gameOn && this.round === 0">{{this.teamAssigner()}}</h1> -->
   </div>
 </template>
 
@@ -28,7 +29,7 @@ export default {
     "user": User,
     "score-card": ScoreCard,
     "menu-button": Menu,
-    "result-display": Result
+    "result-display": Result,
   },
   data() {
     return {
@@ -45,7 +46,9 @@ export default {
       gameStatus: {},
       assassinClicked: false,
       redWins: 0,
-      blueWins: 0
+      blueWins: 0,
+      teamAssigned1: "",
+      teamAssigned2: ""
     }
   },
 
@@ -100,8 +103,19 @@ export default {
   },
   methods: {
 
+    teamAssigner() {
+        const randTeam = Math.random() < 0.5
+          if (randTeam === true){
+          this.teamAssigned1 = "Team 1 - " 
+          this.teamAssigned2 = "Team 2 - "
+        } else if (randTeam === false){
+          this.teamAssigned1 = "Team 2 - " 
+          this.teamAssigned2 = "Team 1 - "
+        }
+    },
+    
     clickCard(card) {
-        this.addPointsToRightTeam(card);
+      this.addPointsToRightTeam(card);
       
       if (card.colour === "Black") {
         this.team = this.turn;
@@ -119,8 +133,7 @@ export default {
         this.wonRound = true;
         this.addVictoryAllCards(this.team)
         this.saveNewMove();
-      this.saveNewGameStatus();
-
+        this.saveNewGameStatus();
         this.updateForAllPlayers();
       }
       else {
@@ -320,6 +333,16 @@ html {
   background-position-x: left;
   font-size: 16px;
 }
+/* #assign-banner{
+  word-spacing: 10px;
+  font-size: x-large;
+  width: 200%;
+  margin-left: -320%;
+  padding-left: 30vw;
+  padding-right: 30vw;
+  color:red;
+  /* background: linear-gradient(to right, rgb(177, 8, 8) 0%,white 10%,#000000 50%,white 10%,rgb(20, 117, 134) 100%); 
+  }*/
 
 #menu{
   grid-column: 5/6;

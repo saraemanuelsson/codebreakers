@@ -7,13 +7,14 @@
           <span></span>
           <span></span>
         <ul id="menu">
+            <li v-if="!gameOn" @click="teamAssigner">Team Assigner</li>
             <li @click="startGame">Start New Game</li>
             <li v-if="gameOn" @click="endGame">End Current Game</li>
             <li v-if="!gameOn && !assassinClicked" @click="resumeGame">Resume Game</li>
             <a href="https://czechgames.com/files/rules/codenames-rules-en.pdf" target="_blank"><li>Show Rules</li></a>
             <li class='round'>ROUND  {{round}}</li>
-            <li class='red-wins'>RED  {{redWins}}</li>   
-            <li class='blue-wins'>BLUE  {{blueWins}}</li>
+            <li class='red-wins'>{{teamAssigned1}} RED  {{redWins}}</li>   
+            <li class='blue-wins'>{{teamAssigned2}} BLUE  {{blueWins}}</li>
         </ul>
      </div>
   </nav>
@@ -26,8 +27,12 @@ import App from '../App'
 
 export default {
 name: 'menu-button',
-props: ['gameOn', 'redWins', 'blueWins', 'round', 'redScore', 'blueScore', 'assassinClicked'],
+props: ['gameOn', 'redWins', 'blueWins', 'round', 'redScore', 'blueScore', 'assassinClicked', 'teamAssigned1', 'teamAssigned2'],
 methods: {
+  teamAssigner(){
+    this.$parent.teamAssigner();  
+    console.log(teamAssigned1)
+  },
   startGame(){
     this.$parent.startGame()
   },
