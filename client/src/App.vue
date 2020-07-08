@@ -41,6 +41,7 @@ export default {
       round: 0,
       team: "",
       wonGame: false,
+      wonRound: false,
       gameStatus: {},
 
       redWins: 0,
@@ -103,10 +104,11 @@ export default {
       
       if (card.colour === "Black") {
         this.team = this.turn;
-        this.wonGame = true;
+        this.wonRound = true;
       } else if (this.redScore === 0 || this.blueScore === 0) {
         this.team = card.colour;
         this.wonGame = true;
+        this.wonRound = true;
       };
      
       this.addVictoryToRightTeam()
@@ -128,6 +130,7 @@ export default {
       this.turn = "Red";
       this.team = "";
       this.wonGame = false;
+      this.wonRound = false;
       this.gameOn = false;
       this.saveNewMove();
       this.saveNewGameStatus();
@@ -151,9 +154,9 @@ export default {
     },
 
     addVictoryToRightTeam(){
-        if (this.wonGame && this.team === 'Blue') {
+        if (this.wonRound && this.team === 'Blue') {
           this.blueWins = this.blueWins + 1
-        } else if (this.wonGame && this.team === 'Red')
+        } else if (this.wonRound && this.team === 'Red')
           this.redWins = this.redWins + 1
     },
 
