@@ -43,10 +43,7 @@ export default {
       wonGame: false,
       wonRound: false,
       gameStatus: {},
-<<<<<<< HEAD
       assassinClicked: false,
-=======
->>>>>>> develop
       redWins: 0,
       blueWins: 0
     }
