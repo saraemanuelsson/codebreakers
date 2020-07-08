@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <button id="toggle-game-button" v-on:click="toggleGameState">{{ gameStateText }}</button>
-    <menu-button id="menu" :gameOn="gameOn"></menu-button>
+    <menu-button id="menu" :redScore="redScore" :blueScore="blueScore" :gameOn="gameOn"></menu-button>
     <score-bar id="score-bar" :redScore="redScore" :blueScore="blueScore" :gameOn="gameOn"></score-bar>
     <grid class="grid" v-bind:class="{blueTurn:(turn === 'Blue')}" :cards="cards" :gameOn="gameOn" ></grid>
     <result-display :team="team" :wonGame="wonGame"></result-display>
@@ -60,7 +60,7 @@ export default {
   computed: {
     gameStateText() {
       return this.gameOn ? 'End turn' : 'Start game'
-    }
+    },
     
   },
   methods: {
@@ -84,11 +84,11 @@ export default {
 
     endGame(){
       this.turn = "Red";
-      this.redScore = 9;
-      this.blueScore = 8;
       this.team = "";
       this.wonGame = false;
       this.gameOn = false;
+      this.saveNewMove();
+      this.saveNewGameStatus();
     },
 
     checkIfWrongColour(card){
