@@ -6,7 +6,6 @@
     <grid class="grid" v-bind:class="{blueTurn:(turn === 'Blue')}" :cards="cards" :gameOn="gameOn" ></grid>
     <result-display :team="team" :wonGame="wonGame"></result-display>
     <user id="user-bar" :cards="cards" :gameOn="gameOn"></user>
-    <!-- <h1 id="assign-banner" v-if="!gameOn && this.round === 0">{{this.teamAssigner()}}</h1> -->
   </div>
 </template>
 
@@ -333,16 +332,6 @@ html {
   background-position-x: left;
   font-size: 16px;
 }
-/* #assign-banner{
-  word-spacing: 10px;
-  font-size: x-large;
-  width: 200%;
-  margin-left: -320%;
-  padding-left: 30vw;
-  padding-right: 30vw;
-  color:red;
-  /* background: linear-gradient(to right, rgb(177, 8, 8) 0%,white 10%,#000000 50%,white 10%,rgb(20, 117, 134) 100%); 
-  }*/
 
 #menu{
   grid-column: 5/6;
