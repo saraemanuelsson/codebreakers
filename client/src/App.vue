@@ -123,7 +123,6 @@ export default {
         this.addVictoryAssassin(this.team)
         this.saveNewMove();
         this.saveNewGameStatus();
-
         this.updateForAllPlayers();
         this.wonGame = false;
       } else if (this.redScore === 0 || this.blueScore === 0) {

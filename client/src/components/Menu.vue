@@ -11,7 +11,7 @@
             <li @click="startGame">Start New Game</li>
             <li v-if="gameOn" @click="endGame">End Current Game</li>
             <li v-if="!gameOn && !assassinClicked" @click="resumeGame">Resume Game</li>
-            <a href="https://czechgames.com/files/rules/codenames-rules-en.pdf" target="_blank"><li>Show Rules</li></a>
+            <a href="https://drive.google.com/file/d/1zjeiIJAANL_MXi7rqyp3CIOMCvqUtO-v/view?usp=sharing" target="_blank"><li>Show Rules</li></a>
             <li class='round'>ROUND  {{round}}</li>
             <li class='red-wins'>{{teamAssigned1}} RED  {{redWins}}</li>   
             <li class='blue-wins'>{{teamAssigned2}} BLUE  {{blueWins}}</li>
