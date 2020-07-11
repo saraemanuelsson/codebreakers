@@ -71,16 +71,16 @@ export default {
     })
 
     eventBus.$on("change", (data) => {
-      this.turn = data.turn
-      this.redScore = data.redScore
-      this.blueScore = data.blueScore
-      this.cards = data.cards
-      this.gameOn = data.gameOn
-      this.team = data.team
-      this.wonGame = data.wonGame
-      this.assassinClicked = data.assassinClicked
-      this.redWins = data.redWins
-      this.blueWins = data.blueWins
+      this.redScore = data.redScore,
+      this.blueScore = data.blueScore,
+      this.turn = data.turn,
+      this.cards = data.cards,
+      this.gameOn = data.gameOn,
+      this.team = data.team,
+      this.wonGame = data.wonGame,
+      this.assassinClicked = data.assassinClicked,
+      this.redWins = data.redWins,
+      this.blueWins = data.blueWins,
       this.round = data.round
     })
 
@@ -123,7 +123,7 @@ export default {
         this.addVictoryAssassin(this.team)
         this.saveNewMove();
         this.saveNewGameStatus();
-        this.updateForAllPlayers();
+        // this.updateForAllPlayers();
         this.wonGame = false;
       } else if (this.redScore === 0 || this.blueScore === 0) {
         this.team = card.colour;
@@ -132,17 +132,18 @@ export default {
         this.addVictoryAllCards(this.team)
         this.saveNewMove();
         this.saveNewGameStatus();
-        this.updateForAllPlayers();
+        // this.updateForAllPlayers();
       }
       else {
         this.checkIfWrongColour(card);
         this.saveNewMove();
-        this.updateForAllPlayers();
+        // this.updateForAllPlayers();
       }
      
       const index = this.cards.indexOf(card);
       this.cards[index].isClicked = true;
-      this.saveNewGameStatus;
+      this.saveNewGameStatus
+      .next(this.updateForAllPlayers())
       
     },
 
@@ -208,11 +209,12 @@ export default {
     },
 
     nextTurn(){
-      
       if(this.turn === "Red") {
         this.turn = "Blue"
+        this.updateForAllPlayers()
       } else {
         this.turn = "Red"
+        this.updateForAllPlayers()
       }
       this.saveNewMove()
     },

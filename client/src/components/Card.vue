@@ -51,7 +51,7 @@ p {
   padding-top: 20%;
 }
 
-.cardSelected {
+.cardSelected {color: none;
   border: 3px solid rgb(253, 181, 64);
 }
 
