@@ -112,39 +112,33 @@ export default {
           this.teamAssigned2 = "Team 1 - "
         }
     },
-    
+    clickCardHelper(){
+        this.addVictoryAllCards(this.team)
+        this.saveNewMove();
+        this.saveNewGameStatus();
+        this.wonRound = true;
+    },
     clickCard(card) {
       this.addPointsToRightTeam(card);
       
       if (card.colour === "Black") {
+        this.clickCardHelper();
         this.team = this.turn;
-        this.wonRound = true;
         this.assassinClicked = true;
-        this.addVictoryAssassin(this.team)
-        this.saveNewMove();
-        this.saveNewGameStatus();
-        // this.updateForAllPlayers();
         this.wonGame = false;
       } else if (this.redScore === 0 || this.blueScore === 0) {
+        this.clickCardHelper();
         this.team = card.colour;
         this.wonGame = true;
-        this.wonRound = true;
-        this.addVictoryAllCards(this.team)
-        this.saveNewMove();
-        this.saveNewGameStatus();
-        // this.updateForAllPlayers();
       }
       else {
         this.checkIfWrongColour(card);
         this.saveNewMove();
-        // this.updateForAllPlayers();
       }
-     
       const index = this.cards.indexOf(card);
       this.cards[index].isClicked = true;
-      this.saveNewGameStatus
-      .next(this.updateForAllPlayers())
-      
+      this.saveNewGameStatus();
+      this.updateForAllPlayers();
     },
 
     updateForAllPlayers(){
