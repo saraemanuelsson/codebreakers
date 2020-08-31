@@ -16,7 +16,6 @@ You might use persistence to keep track of the state of the game or track scores
 * Save game state in database and allow for game to be resumed
 * Handle team currently in play: Incorrect guess will end the turn otherwise the team will use the end turn button.
 
-
 ## Extensions
 
 * Make it multiplayer instead of pass and play, using sockets.io
@@ -25,6 +24,19 @@ You might use persistence to keep track of the state of the game or track scores
 * Build a separate colour map only visible for the CodeBreaker instead of revealing the colour of the cards
 * Have a timer that will end the turn if it runs out of time before the team has guessed or ended their turn.
 
+### [Codebreaker rules](https://drive.google.com/file/d/1zjeiIJAANL_MXi7rqyp3CIOMCvqUtO-v/view?usp=sharing) 
+
+Guesser view:
+
+![Game](https://user-images.githubusercontent.com/48181178/91713834-6b7f4480-eb82-11ea-8bab-3ccb7bd23dfa.png)
+
+CodeBreaker view:
+
+![Codebreaker](https://user-images.githubusercontent.com/48181178/91713848-7043f880-eb82-11ea-9727-efb5a26d4b80.png)
+
+Assassin Clicked:
+
+![Losing](https://user-images.githubusercontent.com/48181178/91713858-733ee900-eb82-11ea-8b0d-e5c397c99469.png)
 
 ## Resources
 https://socket.io/
